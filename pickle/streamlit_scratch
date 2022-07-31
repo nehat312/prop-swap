@@ -1,0 +1,245 @@
+## DAN KIM COMMENTS
+    #### REDUCE SCALE TO 5
+    ## NDA / Transaction Docs
+    ## CLEAN OUTPUTS - T-12 / RR
+
+
+#with open('/Users/nehat312/dsir-426/assignments/projects/capstone/pickle/pickle.pkl', mode='rb') as pickle_in:
+#    buyer_recs = pickle.load(pickle_in)
+
+#@st.cache(persist = True, allow_output_mutation = True)
+#def load_model(path = MODEL_PATH):
+#    with open(path, "rb") as f:
+#        f.seek(0)
+#        model = pickle.load(f)
+#        return model
+
+
+#expander = st.beta_expander("DISCLAIMER")
+#expander.write("Patent Pending")
+
+
+if sector == "MULTIFAMILY":
+  if sector == "FULL-SERVICE HOTEL":
+  if sector == "LIMITED-SERVICE HOTEL":
+  if sector == "STRIP CENTER":
+  if sector == "NNN RETAIL":
+  if sector == "MALL":
+  if sector == "SELF-STORAGE":
+  if sector == "INDUSTRIAL":
+  if sector == "CBD OFFICE":
+  if sector == "SUBURBAN OFFICE":
+
+      #fig.update_layout(width=900,height=600)
+
+
+plt.figure(figsize = (30, 20))
+fig, ax = plt.subplots()
+sns.barplot(y = all_investor_idx['INVESTOR TYPE'], x = all_investor_idx['IND AVG PRICE ($M)'], hue = all_investor_idx['AVG QUALITY ROUND'], palette = 'mako', ci = None, orient = 'h')
+#plt.title('AVERAGE RETAIL PRICE PSF', fontsize = 24)
+plt.xlabel('TOTAL AVG PRICE ($MM)', fontsize = 18)
+plt.ylabel('INVESTOR TYPE', fontsize = 18)
+plt.legend(loc = "best")
+st.pyplot(fig)
+
+plt.figure(figsize = (30, 20))
+fig, ax = plt.subplots()
+sns.barplot(y = all_investor_idx['INVESTOR TYPE'], x = all_investor_idx['RETAIL AVG PSF'], hue = all_investor_idx['INVESTOR TYPE'], palette = 'mako', ci = None, orient = 'h')
+    #ax.plot(all_investor_idx['TTL AVG PRICE ($M)'], type = 'scatter', bins=20)
+#plt.title('AVERAGE RETAIL PRICE PSF', fontsize = 24)
+plt.xlabel('RETAIL AVG PRICE PSF', fontsize = 18)
+plt.ylabel('INVESTOR TYPE', fontsize = 18)
+plt.legend(loc = "best")
+st.pyplot(fig)
+
+    #st.plotly_chart(fig, use_container_width=True)
+
+
+#import plotly.figure_factory as ff
+
+#st.multiselect()
+
+### MAX WIDTH PERMANENT ###
+def _max_width_():
+    max_width_str = f"max-width: 2000px;"
+    st.markdown(
+        f"""
+    <style>
+    .reportview-container .main .block-container{{
+        {max_width_str}
+    }}
+    </style>
+    """,
+        unsafe_allow_html=True,
+)
+
+
+#uploaded_files = st.file_uploader(INVESTORS_PATH, accept_multiple_files=True)
+#for uploaded_file in uploaded_files:
+#    bytes_data = uploaded_file.read()
+#    st.write("filename:", uploaded_file.name)
+#    st.write(bytes_data)
+
+
+#st.progress()
+
+#streamlit.line_chart()
+#streamlit.area_chart()
+#streamlit.bar_chart()
+#streamlit.altair_chart()
+
+#color = st.color_picker('Pick A Color', '#00f900')
+
+#st.markdown()
+
+
+@st.cache(Persist = True, allow_output_mutation = True)
+def load_model(path = MODEL_PATH):
+    with open(path, "rb") as f:
+        model = pickle.load(f)
+    return model
+
+st.title('Practice with James')
+st.write('Smaller font sub-title')
+
+result = st.text_input("property parameters")
+
+with open(MODEL_PATH, "rb") as f:
+    model = pickle.load(f)
+prediction = model.predict([result])[0]
+
+st.write("RECOMMENDED BUYERS: {result}")
+
+
+
+
+left_column, right_column = st.beta_columns(2)
+left_column.button('PROP/SWAP')
+
+# Or even better, call Streamlit functions inside a "with" block:
+
+
+    with open(MODEL_PATH, "rb") as f:
+    model = pickle.load(f)
+    prediction = model.predict([result])[0]
+
+    predicted_author = pipe.predict([user_text])[0]
+    st.write(f'You write like: {predicted_author}')
+
+
+#page = st.sidebar.selectbox(
+#    'DASHBOARD:',
+#    ('PROP/SWAP', 'NOTES')
+#)
+#if page == 'PROP/SWAP':
+#    st.write('PROP/SWAP')
+
+#if page == 'NOTES':
+#    st.write('''TO BE DETERMINED''')
+
+
+  #st.slider()
+  #st.button()
+  #st.selectbox()
+  #x = st.slider('x')
+  #st.write(x, 'squared is', x * x)
+  #st.text_input("Your name", key="name")
+    #Access value at any point with:
+  #st.session_state.name
+
+
+
+
+@st.cache(Persist = True, allow_output_mutation = True)
+
+def filter_buyers(sector, prop_size, min_prop_price, prop_qual):
+  if sector == 'MULTIFAMILY':
+    for investors in mf_investor_idx:
+      mf_size_filter = mf_investor_idx[mf_investor_idx['MF_UNITS_PROP'] >= prop_size]
+      mf_min_price_filter = mf_size_filter[mf_size_filter['MF_AVG_PRICE'] >= min_prop_price]
+      mf_qual_filter = mf_min_price_filter[(mf_min_price_filter['QUALITY'] >= (prop_qual-1)) & (mf_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      mf_buyer_recs = mf_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      mf_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'MF_VOL', 'MF_PROPS', 'MF_UNITS'], inplace = True)
+    return mf_buyer_recs
+  elif sector == 'STRIP CENTER':
+    for investors in sc_investor_idx:
+      sc_size_filter = sc_investor_idx[sc_investor_idx['SC_SF_PROP'] >= prop_size]
+      sc_min_price_filter = sc_size_filter[sc_size_filter['SC_AVG_PRICE'] >= min_prop_price]
+      sc_qual_filter = sc_min_price_filter[(sc_min_price_filter['QUALITY'] >= (prop_qual-1)) & (sc_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      sc_buyer_recs = sc_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      sc_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'SC_VOL', 'SC_PROPS', 'SC_SF'], inplace = True)
+    return sc_buyer_recs
+  elif sector == 'NNN RETAIL':
+    for investors in nnn_investor_idx:
+      nnn_size_filter = nnn_investor_idx[nnn_investor_idx['NNN_SF_PROP'] >= prop_size]
+      nnn_min_price_filter = nnn_size_filter[nnn_size_filter['NNN_AVG_PRICE'] >= min_prop_price]
+      nnn_qual_filter = nnn_min_price_filter[(nnn_min_price_filter['QUALITY'] >= (prop_qual-1)) & (nnn_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      nnn_buyer_recs = nnn_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      nnn_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'NNN_VOL', 'NNN_PROPS', 'NNN_SF'], inplace = True)
+    return nnn_buyer_recs
+  elif sector == 'MALL':
+    for investors in mall_investor_idx:
+      mall_size_filter = mall_investor_idx[mall_investor_idx['MALL_SF_PROP'] >= prop_size]
+      mall_min_price_filter = mall_size_filter[mall_size_filter['MALL_AVG_PRICE'] >= min_prop_price]
+      mall_qual_filter = mall_min_price_filter[(mall_min_price_filter['QUALITY'] >= (prop_qual-2)) & (mall_min_price_filter['QUALITY'] <= (prop_qual+2))]
+      mall_buyer_recs = mall_qual_filter.sort_values(by = 'MALL_PROPS', ascending = False)[:10]
+      mall_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'MALL_VOL', 'MALL_PROPS', 'MALL_SF'], inplace = True)
+    return mall_buyer_recs
+  elif sector == 'SELF-STORAGE':
+    for investors in ss_investor_idx:
+      ss_size_filter = ss_investor_idx[ss_investor_idx['SS_SF_PROP'] >= prop_size]
+      ss_min_price_filter = ss_size_filter[ss_size_filter['SS_AVG_PRICE'] >= min_prop_price]
+      ss_qual_filter = ss_min_price_filter[(ss_min_price_filter['QUALITY'] >= (prop_qual-1)) & (ss_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      ss_buyer_recs = ss_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      ss_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'SS_VOL', 'SS_PROPS', 'SS_SF'], inplace = True)
+    return ss_buyer_recs
+  elif sector == 'INDUSTRIAL':
+    for investors in ind_investor_idx:
+      ind_size_filter = ind_investor_idx[ind_investor_idx['IND_SF_PROP'] >= prop_size]
+      ind_min_price_filter = ind_size_filter[ind_size_filter['IND_AVG_PRICE'] >= min_prop_price]
+      ind_qual_filter = ind_min_price_filter[(ind_min_price_filter['QUALITY'] >= (prop_qual-1)) & (ind_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      ind_buyer_recs = ind_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      ind_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'IND_VOL', 'IND_PROPS', 'IND_SF'], inplace = True)
+    return ind_buyer_recs
+  elif sector == 'FULL-SERVICE HOTEL':
+    for investors in fs_investor_idx:
+      fs_size_filter = fs_investor_idx[fs_investor_idx['FS_SF_PROP'] >= prop_size]
+      fs_min_price_filter = fs_size_filter[fs_size_filter['FS_AVG_PRICE'] >= min_prop_price]
+      fs_qual_filter = fs_min_price_filter[(fs_min_price_filter['QUALITY'] >= (prop_qual-1)) & (fs_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      fs_buyer_recs = fs_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      fs_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'FS_VOL', 'FS_PROPS', 'FS_KEYS'], inplace = True)
+    return fs_buyer_recs
+  elif sector == 'LIMITED-SERVICE HOTEL':
+    for investors in ls_investor_idx:
+      ls_size_filter = ls_investor_idx[ls_investor_idx['LS_KEYS_PROP'] >= prop_size]
+      ls_min_price_filter = ls_size_filter[ls_size_filter['LS_AVG_PRICE'] >= min_prop_price]
+      ls_qual_filter = ls_min_price_filter[(ls_min_price_filter['QUALITY'] >= (prop_qual-1)) & (ls_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      ls_buyer_recs = ls_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      ls_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'LS_VOL', 'LS_PROPS', 'LS_KEYS'], inplace = True)
+    return ls_buyer_recs
+  elif sector == 'CBD OFFICE':
+    for investors in cbd_investor_idx:
+      cbd_size_filter = cbd_investor_idx[cbd_investor_idx['CBD_SF_PROP'] >= prop_size]
+      cbd_min_price_filter = cbd_size_filter[cbd_size_filter['CBD_AVG_PRICE'] >= min_prop_price]
+      cbd_qual_filter = cbd_min_price_filter[(cbd_min_price_filter['QUALITY'] >= (prop_qual-1)) & (cbd_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      cbd_buyer_recs = cbd_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      cbd_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'CBD_VOL', 'CBD_PROPS', 'CBD_SF'], inplace = True)
+    return cbd_buyer_recs
+  elif sector == 'SUB OFFICE':
+    for investors in sub_investor_idx:
+      sub_size_filter = sub_investor_idx[sub_investor_idx['SUB_SF_PROP'] >= prop_size]
+      sub_min_price_filter = sub_size_filter[sub_size_filter['SUB_AVG_PRICE'] >= min_prop_price]
+      sub_qual_filter = sub_min_price_filter[(sub_min_price_filter['QUALITY'] >= (prop_qual-1)) & (sub_min_price_filter['QUALITY'] <= (prop_qual+1))]
+      sub_buyer_recs = sub_qual_filter.sort_values(by = 'UNIT_RANK', ascending = True)[:10]
+      sub_buyer_recs.drop(axis = 1, columns = ['TTL_SECT', 'TTL_VOL', 'TTL_PROPS', 'TTL_AVG_PRICE', 'QUALITY', 'VOL_RANK', 'PRICE_UNIT_RANK', 'UNIT_RANK', 'SUB_VOL', 'SUB_PROPS', 'SUB_SF'], inplace = True)
+    return sub_buyer_recs
+
+
+
+
+
+    prop_valuation = per_unit_valuation * prop_size
+        st.write("EST. PROPERTY VALUE:")
+        st.write(prop_valuation)
+        st.write("EST. PROPERTY VALUE PSF:")
+        st.write(per_unit_valuation)
