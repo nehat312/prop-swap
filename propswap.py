@@ -89,10 +89,13 @@ sector = st.selectbox('*PROPERTY TYPE:',
                        "LIMITED-SERVICE HOTEL",
                        "CBD OFFICE",
                        "SUBURBAN OFFICE"))
+###***
+# st.sidebar.number_input
 
 with st.form("PROPERTY PARAMETERS"):
     if sector == "MULTIFAMILY":
-        prop_size = st.slider('*TOTAL MF UNITS: [25-1,000 UNITS]', min_value = 0, max_value = 1000, step = 25)
+        # prop_size = st.slider('*TOTAL MF UNITS: [25-1,000 UNITS]', min_value=0, max_value=1000, step=25)
+        prop_size = st.number_input('*TOTAL MF UNITS: [25-1,000 UNITS]', min_value=0, max_value=1000, value=100)
         #prop_size = st.selectbox('*TOTAL MF UNITS: [25-1,000 UNITS]', list(range(25,750,25)))
     if sector == "FULL-SERVICE HOTEL":
         prop_size = st.selectbox('*TOTAL FS KEYS: [25-1,000 KEYS]', list(range(25,750,25)))
