@@ -85,9 +85,9 @@ st.container()
 
 
 st.title('PROP/SWAP')
-st.header('*VIRTUAL CRE BROKER*')
+st.subheader('*VIRTUAL CRE BROKER*')
 
-prop_params_header = st.subheader('PROPERTY PARAMETERS:')
+prop_params_header = st.header('INPUT PROPERTY PARAMETERS:')
 
 sector = st.selectbox('*PROPERTY TYPE:',
                       ("MULTIFAMILY",
