@@ -236,7 +236,7 @@ with st.form("PROPERTY PARAMETERS"):
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
             st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED PROPERTY VALUE / UNIT:")
-            st.write(per_unit_valuation)
+            st.write(f'{per_unit_valuation:.0f}')
 
             mf_chart_1 = px.scatter(buyer_rec_df, #all_investor_idx
                                   x=buyer_rec_df['MF_AVG_PRICE_MM'],
