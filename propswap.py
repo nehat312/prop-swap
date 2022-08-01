@@ -126,14 +126,15 @@ with st.form("PROPERTY PARAMETERS"):
     # prop_cap_rate = st.selectbox('*EST. CAP RATE:',
     #                          list(range(1, 6, 1)))
 
-    if min_prop_price == 0:
-        st.write('PLEASE INPUT VALUE ABOVE $0')
+    params_submit = st.form_submit_button("PROP/SWAP")
+
+    # if min_prop_price == 0:
+    #     st.write('PLEASE INPUT VALUE ABOVE $0')
 
     # elif min_prop_price > 0:
     #     implied_ppu_title = st.write('*IMPLIED VALUE / UNIT:')
     #     implied_ppu = st.markdown(round(min_prop_price * 1_000_000 / prop_size))
 
-    params_submit = st.form_submit_button("PROP/SWAP")
 
 ### PICKLE PICKLE PICKLE ###
 
