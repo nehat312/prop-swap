@@ -72,33 +72,35 @@ sub_cols = ['INVESTOR', 'INVESTOR_TYPE', 'SUB_AVG_PRICE_MM', 'SUB_SF_PROP', 'SUB
 #####################
 
 st.container()
-left_column, right_column = st.columns(2)
-left_button = left_column.button('PROP/SWAP')
-right_button = right_column.button('UNIVERSE')
-if left_button:
-    left_column.write('*ERROR: CURRENTLY UNDER MAINTENANCE*')
-if right_button:
+# left_column, right_column = st.columns(2)
+# left_button = left_column.button('PROP/SWAP')
+# right_button = right_column.button('UNIVERSE')
+# if left_button:
+#     left_column.write('*ERROR: CURRENTLY UNDER MAINTENANCE*')
+# if right_button:
+#
+# ### TABLEAU LINK ###
+#     #st.write('REAL ESTATE INVESTOR UNIVERSE:')
+#     right_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
-### TABLEAU LINK ###
-    #st.write('REAL ESTATE INVESTOR UNIVERSE:')
-    right_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
-# <div class='tableauPlaceholder' id='viz1659298369110' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;S4&#47;S4GKR7QYB&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;S4GKR7QYB' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;S4&#47;S4GKR7QYB&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1659298369110');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-# vizElement.parentNode.insertBefore(scriptElement, vizElement);
-# </script>
-
-st.title('PROP/SWAP')
+st.title('PROP/SWAP', style={'textAlign': 'Center', 'backgroundColor': 'rgb(223,187,133)', # #rgb(223,187,133) #3a7c89 #42B7B9
+                                            'color': 'black', 'fontWeight': 'bold', 'fontSize': '36px', #'#F1F1F1'
+                                            'border': '5px solid black', 'font-family': 'Arial'})
 st.header('*VIRTUAL CRE BROKER*')
 
 prop_params_header = st.subheader('PROPERTY PARAMETERS:')
 
-sector = st.selectbox(
-    '*PROPERTY TYPE:',
-    ("MULTIFAMILY",
-     "STRIP CENTER", "NNN RETAIL", "MALL",
-     "SELF-STORAGE", "INDUSTRIAL",
-     "FULL-SERVICE HOTEL", "LIMITED-SERVICE HOTEL",
-     "CBD OFFICE", "SUBURBAN OFFICE"))
+sector = st.selectbox('*PROPERTY TYPE:',
+                      ("MULTIFAMILY",
+                       "NNN RETAIL","STRIP CENTER",
+                       "MALL",
+                       "SELF-STORAGE",
+                       "INDUSTRIAL",
+                       "FULL-SERVICE HOTEL",
+                       "LIMITED-SERVICE HOTEL",
+                       "CBD OFFICE",
+                       "SUBURBAN OFFICE"))
 
 with st.form("PROPERTY PARAMETERS"):
     if sector == "MULTIFAMILY":
@@ -243,7 +245,7 @@ with st.form("PROPERTY PARAMETERS"):
             per_unit_valuation = round(buyer_rec_df['MF_AVG_PPU'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED PROPERTY VALUE / UNIT:")
             st.write(per_unit_valuation)
 
@@ -257,49 +259,34 @@ with st.form("PROPERTY PARAMETERS"):
             st.write('TARGETED INVESTOR POOL -- VALUATION RANGE')
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
 
-            # mf_chart_2 = px.bar(y=buyer_rec_df['INVESTOR_TYPE'],
-            #                     x=buyer_rec_df['MF_AVG_PPU'],
-            #                     color=buyer_rec_df['INVESTOR_TYPE'],
-            #                     color_continuous_scale='Tropic')
-            #
-            # st.write('TARGETED INVESTOR POOL -- VALUATION RANGE')
-            # st.plotly_chart(mf_chart_2)
+        # plt.xlabel('AVG MULTIFAMILY PPU', fontsize = 18)
+        # plt.ylabel('INVESTOR TYPE', fontsize = 18)
 
-
-            # plt.figure(figsize = (30, 20))
-            # fig, ax = plt.subplots()
-            # sns.barplot(y = buyer_rec_df['INVESTOR_TYPE'], x = buyer_rec_df['MF_AVG_PPU'], palette = 'mako', ci = None, orient = 'h')
-            # plt.xlabel('AVG MULTIFAMILY PPU', fontsize = 18)
-            # plt.ylabel('INVESTOR TYPE', fontsize = 18)
-            # plt.legend(loc = "best")
-            # st.pyplot(fig)
 
         elif sector == 'STRIP CENTER':
             per_unit_valuation = round(buyer_rec_df['SC_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
-            st.write(per_unit_valuation)
+            st.write(f'{per_unit_valuation:.0f}')
 
             sc_chart_1 = px.scatter(buyer_rec_df,  # all_investor_idx
                                     x=buyer_rec_df['SC_AVG_PRICE_MM'],
                                     y=buyer_rec_df['SC_AVG_PSF'],
                                     # hover_data=buyer_rec_df['INVESTOR'],
                                     color=buyer_rec_df['INVESTOR_TYPE'],
-                                    size=buyer_rec_df['INVESTOR_TYPE'],
+                                    # size=all_investor_idx['TOTAL_VOL_RANK'],
                                     color_continuous_scale='Tropic')
 
             st.write('TARGETED INVESTOR POOL -- VALUATION RANGE')
             st.plotly_chart(sc_chart_1, use_container_width=False, sharing="streamlit")
 
+
             # sc_chart_2 = px.parallel_categories(buyer_rec_df,
             #                                     color=buyer_rec_df['INVESTOR_TYPE'],
             #                                     color_continuous_scale='Tropic',) #px.colors.sequential.Inferno
-            #
-            #
-            # st.write('TARGETED INVESTOR POOL -- VALUATION RANGE')
-            # st.plotly_chart(sc_chart_2, use_container_width=False, sharing="streamlit")
+
 
 
             # sc_chart_2 = px.bar(y=buyer_rec_df['INVESTOR_TYPE'],
@@ -324,81 +311,71 @@ with st.form("PROPERTY PARAMETERS"):
             #                     color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=2)
 
             # st.write('TARGETED INVESTOR POOL -- VALUATION RANGE')
-            # st.plotly_chart(sc_chart_2)
-
+            # st.plotly_chart(sc_chart_2, use_container_width=False, sharing="streamlit")
 
         elif sector == 'NNN RETAIL':
             per_unit_valuation = round(buyer_rec_df['NNN_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
-            st.write(per_unit_valuation)
-
+            st.write(f'{per_unit_valuation:.0f}')
 
         elif sector == 'MALL':
             per_unit_valuation = round(buyer_rec_df['MALL_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
-            st.write(per_unit_valuation)
-
+            st.write(f'{per_unit_valuation:.0f}')
 
         elif sector == 'SELF-STORAGE':
             per_unit_valuation = round(buyer_rec_df['SS_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
-            st.write(per_unit_valuation)
-
-
+            st.write(f'{per_unit_valuation:.0f}')
 
         elif sector == 'INDUSTRIAL':
             per_unit_valuation = round(buyer_rec_df['IND_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
-            st.write(per_unit_valuation)
-
+            st.write(f'{per_unit_valuation:.0f}')
 
         elif sector == 'FULL-SERVICE HOTEL':
             per_unit_valuation = round(buyer_rec_df['FS_AVG_PPK'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE / KEY:")
-            st.write(per_unit_valuation)
-
+            st.write(f'{per_unit_valuation:.0f}')
 
         elif sector == 'LIMITED-SERVICE HOTEL':
             per_unit_valuation = round(buyer_rec_df['LS_AVG_PPK'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE / KEY:")
-            st.write(per_unit_valuation)
-
-
+            st.write(f'{per_unit_valuation:.0f}')
 
         elif sector == 'CBD OFFICE':
             per_unit_valuation = round(buyer_rec_df['CBD_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
-            st.write(per_unit_valuation)
-
+            st.write(f'{per_unit_valuation:.0f}')
 
         elif sector == 'SUB OFFICE':
             per_unit_valuation = round(buyer_rec_df['SUB_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
             st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(prop_valuation / 1_000_000)
+            st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
-            st.write(per_unit_valuation)
+            st.write(f'{per_unit_valuation:.0f}')
 
 
 # style={'textAlign': 'Center', 'border': '4px solid black', 'font-family': 'Arial'}
@@ -407,6 +384,12 @@ with st.form("PROPERTY PARAMETERS"):
 ### EXPLAIN QUALITY SCALE ###
 
 ## CREDITS / FOOTNOTES
+
+### TABLEAU LINK ###
+st.write('REAL ESTATE INVESTOR UNIVERSE:')
+st.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
+
+
 st.success('THANKS FOR PROP/SWAPPING')
     #st.warning('NO BUYERS FOUND')
 # st.write('*~PROP/SWAP BETA MODE~*')
@@ -460,7 +443,14 @@ st.stop()
 #                                            'color': 'black', 'fontWeight': 'bold', 'fontSize': '24px',
 #                                            'border': '4px solid black', 'font-family': 'Arial'}),
 
+
+
+# <div class='tableauPlaceholder' id='viz1659298369110' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;S4&#47;S4GKR7QYB&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;S4GKR7QYB' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;S4&#47;S4GKR7QYB&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1659298369110');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+# vizElement.parentNode.insertBefore(scriptElement, vizElement);
+# </script>
+
 #st.spinner()
 #with st.spinner(text='CONNECTING'):
 #    time.sleep(5)
 #    st.success('LIVE')
+
