@@ -376,11 +376,10 @@ with st.form("PROPERTY PARAMETERS"):
 
 left_column, right_column = st.columns(2)
 left_button = left_column.button('GITHUB')
-right_button = right_column.button('CRE INVESTORS')
+right_button = right_column.button('INVESTOR UNIVERSE')
 if left_button:
     left_column.write('https://github.com/nehat312/prop-swap')
 if right_button:
-    st.write('REAL ESTATE INVESTOR UNIVERSE:')
     right_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
 
