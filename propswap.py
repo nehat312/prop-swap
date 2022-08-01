@@ -245,7 +245,7 @@ with st.form("PROPERTY PARAMETERS"):
                                   color=buyer_rec_df['INVESTOR_TYPE'],
                                   color_continuous_scale='Tropic')
 
-            st.write('TARGETED INVESTOR POOL -- VALUATION RANGE')
+            st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
 
         # plt.xlabel('AVG MULTIFAMILY PPU', fontsize = 18)
@@ -268,7 +268,7 @@ with st.form("PROPERTY PARAMETERS"):
                                     # size=all_investor_idx['TOTAL_VOL_RANK'],
                                     color_continuous_scale='Tropic')
 
-            st.write('TARGETED INVESTOR POOL -- VALUATION RANGE')
+            st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(sc_chart_1, use_container_width=False, sharing="streamlit")
 
 
