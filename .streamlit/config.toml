@@ -1,6 +1,8 @@
 [theme]
-primaryColor="#07efdb"
-backgroundColor="#07efdb"
-secondaryBackgroundColor="#0a0a0a"
-textColor="#c00ce4"
-font="sans serif"
+
+## ALIEN // MIAMI VICE
+primaryColor="#09ff00" #"#07efdb"
+backgroundColor="#02619C" #"#07efdb"
+secondaryBackgroundColor="#020202" #"#0a0a0a"
+textColor="#09ff00" #"#c00ce4"
+font="monospace" #"sans serif"
