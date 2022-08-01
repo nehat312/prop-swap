@@ -72,16 +72,6 @@ sub_cols = ['INVESTOR', 'INVESTOR_TYPE', 'SUB_AVG_PRICE_MM', 'SUB_SF_PROP', 'SUB
 #####################
 
 st.container()
-# left_column, right_column = st.columns(2)
-# left_button = left_column.button('PROP/SWAP')
-# right_button = right_column.button('UNIVERSE')
-# if left_button:
-#     left_column.write('*ERROR: CURRENTLY UNDER MAINTENANCE*')
-# if right_button:
-#
-# ### TABLEAU LINK ###
-#     #st.write('REAL ESTATE INVESTOR UNIVERSE:')
-#     right_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
 
 st.title('PROP/SWAP')
@@ -383,14 +373,21 @@ with st.form("PROPERTY PARAMETERS"):
 
 ## CREDITS / FOOTNOTES
 
-### TABLEAU LINK ###
-st.write('REAL ESTATE INVESTOR UNIVERSE:')
-st.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
+left_column, right_column = st.columns(2)
+left_button = left_column.button('GITHUB')
+right_button = right_column.button('CRE INVESTORS')
+if left_button:
+    left_column.write('https://github.com/nehat312/prop-swap')
+if right_button:
+    st.write('REAL ESTATE INVESTOR UNIVERSE:')
+    right_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
 
 st.success('THANKS FOR PROP/SWAPPING')
-    #st.warning('NO BUYERS FOUND')
+
+# st.warning('NO BUYERS FOUND')
 # st.write('*~PROP/SWAP BETA MODE~*')
+
 st.stop()
 
 
