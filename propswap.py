@@ -84,9 +84,7 @@ st.container()
 #     right_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
 
-st.title('PROP/SWAP', style={'textAlign': 'Center', 'backgroundColor': 'rgb(223,187,133)', # #rgb(223,187,133) #3a7c89 #42B7B9
-                                            'color': 'black', 'fontWeight': 'bold', 'fontSize': '36px', #'#F1F1F1'
-                                            'border': '5px solid black', 'font-family': 'Arial'})
+st.title('PROP/SWAP')
 st.header('*VIRTUAL CRE BROKER*')
 
 prop_params_header = st.subheader('PROPERTY PARAMETERS:')
