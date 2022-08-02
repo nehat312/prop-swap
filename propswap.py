@@ -67,16 +67,7 @@ sub_cols = ['INVESTOR', 'INVESTOR_TYPE', 'SUB_AVG_PRICE_MM', 'SUB_SF_PROP', 'SUB
 ### STREAMLIT APP ###
 #####################
 
-
-st.container()
-
-st.title('PROP/SWAP')
-st.subheader('*VIRTUAL CRE BROKER*')
-
-# img = Image.open('untitled.jpg')
-
-## LAYOUT CONFIGURATION ##
-
+## CONFIGURATION ##
 st.set_page_config(page_title="PROP/SWAP") #, page_icon=":smirk:"
 
 hide_menu_style = """
@@ -88,8 +79,11 @@ hide_menu_style = """
 
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
-# st.sidebar.xyz
+## INTRODUCTION ##
+st.container()
 
+st.title('PROP/SWAP')
+st.subheader('*VIRTUAL CRE BROKER*')
 
 prop_params_header = st.header('INPUT PROPERTY PARAMETERS:')
 
@@ -100,6 +94,8 @@ sector = st.selectbox('PROPERTY TYPE:',
                        "CBD OFFICE", "SUBURBAN OFFICE")
                       )
 
+# img = Image.open('untitled.jpg')
+# st.sidebar.xyz
 
 with st.form("PROPERTY PARAMETERS"):
     if sector == "MULTIFAMILY":
