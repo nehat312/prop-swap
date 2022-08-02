@@ -1,5 +1,8 @@
 # PROP/SWAP
 
+* CRE Buyer / Seller Matchmaking
+* Customized Investor Recommendations
+* Property Valuation Range
 
 ## COMMERCIAL REAL ESTATE OVERVIEW
 
