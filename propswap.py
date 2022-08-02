@@ -275,12 +275,13 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_data=['INVESTOR', 'MSA'],
-                                labels={'INVESTOR_TYPE': 'INVESTOR TYPE', 'MF_AVG_PPU': 'AVG. PPU'},
-                                # height=400,
+                                labels={'INVESTOR': 'INVESTOR', 'MF_AVG_PPU': 'AVG. PPU'},
                                 barmode='group',
+                                height=400,
+                                width=400,
                                 )
 
-            st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
+            # st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(mf_chart_2, use_container_width=False, sharing="streamlit")
 
         elif sector == 'STRIP CENTER':
@@ -306,16 +307,16 @@ with st.form("PROPERTY PARAMETERS"):
             st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(sc_chart_1, use_container_width=False, sharing="streamlit")
 
-
-            sc_chart_2 = px.bar(buyer_rec_df,  # all_investor_idx
+            sc_chart_2 = px.bar(buyer_rec_df,
                                 x=buyer_rec_df['SC_AVG_PRICE_MM'],
                                 y=buyer_rec_df['SC_AVG_PSF'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_data=['INVESTOR', 'MSA'],
-                                labels={'INVESTOR_TYPE': 'INVESTOR TYPE', 'SC_AVG_PSF': 'AVG. PSF ($)'},
-                                # height=400,
+                                labels={'INVESTOR': 'INVESTOR', 'SC_AVG_PSF': 'AVG. PSF ($)'},
                                 barmode='group',
+                                height=400,
+                                width=400,
                                 )
 
 
