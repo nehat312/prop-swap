@@ -45,8 +45,6 @@ all_investor_idx = pd.read_csv(engine_csv) #, header=0, index_col=0 #, encoding=
 
 all_investor_idx = all_investor_idx.sort_values(by='TTL_VOL_RANK')
 
-mf_num_cols = ['MF_AVG_PRICE_MM', 'MF_UNITS_PROP', 'MF_AVG_PPU',  'AVG_QUALITY', 'MF_QUALITY', 'TTL_VOL_RANK', 'TTL_SF_RANK', 'MF_VOL_RANK',]
-
 investor_cols = ['INVESTOR', 'INVESTOR_TYPE', 'CITY', 'STATE', 'COUNTRY', 'MSA', 'WEBSITE', 'C-SUITE']
 mf_cols = ['INVESTOR', 'INVESTOR_TYPE', 'MF_AVG_PRICE_MM', 'MF_UNITS_PROP', 'MF_AVG_PPU',  'MF_QUALITY', 'MF_VOL_RANK', 'CITY', 'STATE', 'COUNTRY', 'MSA', 'WEBSITE'] # AVG_QUALITY, 'TTL_VOL_RANK', 'TTL_SF_RANK',
 sc_cols = ['INVESTOR', 'INVESTOR_TYPE', 'SC_AVG_PRICE_MM', 'SC_SF_PROP', 'SC_AVG_PSF',  'SC_QUALITY', 'SC_VOL_RANK', 'CITY', 'STATE', 'COUNTRY', 'MSA', 'WEBSITE']
@@ -61,6 +59,8 @@ sub_cols = ['INVESTOR', 'INVESTOR_TYPE', 'SUB_AVG_PRICE_MM', 'SUB_SF_PROP', 'SUB
 
 # for i in mf_num_cols:
 #     pd.to_numeric(all_investor_idx[i])
+
+# mf_num_cols = ['MF_AVG_PRICE_MM', 'MF_UNITS_PROP', 'MF_AVG_PPU',  'AVG_QUALITY', 'MF_QUALITY', 'TTL_VOL_RANK', 'TTL_SF_RANK', 'MF_VOL_RANK',]
 
 # print(all_investor_idx.info())
 
@@ -268,6 +268,7 @@ with st.form("PROPERTY PARAMETERS"):
                                     y=buyer_rec_df['SC_AVG_PSF'],
                                     # hover_data=buyer_rec_df['INVESTOR'],
                                     color=buyer_rec_df['INVESTOR_TYPE'],
+                                    size=buyer_rec_df['SC_VOL_RANK'],
                                     # size=all_investor_idx['TOTAL_VOL_RANK'],
                                     color_continuous_scale='Tropic')
 
@@ -275,9 +276,15 @@ with st.form("PROPERTY PARAMETERS"):
             st.plotly_chart(sc_chart_1, use_container_width=False, sharing="streamlit")
 
 
-            # sc_chart_2 = px.parallel_categories(buyer_rec_df,
-            #                                     color=buyer_rec_df['INVESTOR_TYPE'],
-            #                                     color_continuous_scale='Tropic',) #px.colors.sequential.Inferno
+            sc_chart_2 = px.bar(buyer_rec_df,  # all_investor_idx
+                                    x=buyer_rec_df['SC_AVG_PRICE_MM'],
+                                    y=buyer_rec_df['SC_AVG_PSF'],
+                                    # hover_data=buyer_rec_df['INVESTOR'],
+                                    color=buyer_rec_df['INVESTOR_TYPE'],
+                                    color_continuous_scale='Tropic')
+
+            st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
+            st.plotly_chart(sc_chart_2, use_container_width=False, sharing="streamlit")
 
 
 
