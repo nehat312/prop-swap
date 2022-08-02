@@ -126,13 +126,14 @@ with st.form("PROPERTY PARAMETERS"):
     min_prop_price = st.slider('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, step = 5)
         #min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
 
-    # property_region = st.selectbox('*PROPERTY REGION:', ("NORTHEAST", "MID-ATLANTIC", "SOUTHEAST", "WEST", "NORTHWEST", "MIDWEST", "SOUTHWEST"))
 
     prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:',
                              list(range(1,6,1)))
 
     # prop_cap_rate = st.selectbox('*EST. CAP RATE:',
     #                          list(range(1, 6, 1)))
+
+    # property_region = st.selectbox('*PROPERTY REGION:', ("NORTHEAST", "MID-ATLANTIC", "SOUTHEAST", "WEST", "NORTHWEST", "MIDWEST", "SOUTHWEST"))
 
     params_submit = st.form_submit_button("PROP/SWAP")
 
@@ -231,18 +232,18 @@ with st.form("PROPERTY PARAMETERS"):
 
 ## TARGET INVESTOR DATAFRAME ##
     if params_submit:
-        st.write("RECOMMENDED INVESTOR POOL:")
+        st.write("TARGETED INVESTOR POOL:")
         buyer_rec_df = filter_buyers(sector, prop_size, min_prop_price, prop_qual)
         # buyer_rec_df = buyer_rec_df.set_index('INVESTOR')
         # buyer_rec_df.set_index(0, inplace = True)
+
+        ## DATAFRAME STYLING ##
         def buyer_rec_max_ppu(val):
             if val == 'United States':
                 color = 'black'
             else:
                 color = 'pink'
                 return f'background-color: {color}'
-
-        ## DATAFRAME STYLING ##
 
         st.dataframe(buyer_rec_df.style.applymap(buyer_rec_max_ppu, subset=['COUNTRY']))
 
@@ -257,18 +258,30 @@ with st.form("PROPERTY PARAMETERS"):
             st.write(f'{per_unit_valuation:.0f}')
 
             mf_chart_1 = px.scatter(buyer_rec_df, #all_investor_idx
-                                  x=buyer_rec_df['MF_AVG_PRICE_MM'],
-                                  y=buyer_rec_df['MF_AVG_PPU'],
-                                  # hover_data=buyer_rec_df['INVESTOR'],
-                                  color=buyer_rec_df['INVESTOR_TYPE'],
-                                  color_continuous_scale='Tropic')
+                                    x=buyer_rec_df['MF_AVG_PRICE_MM'],
+                                    y=buyer_rec_df['MF_AVG_PPU'],
+                                    # hover_data=buyer_rec_df['INVESTOR'],
+                                    color=buyer_rec_df['INVESTOR_TYPE'],
+                                    hover_data=['INVESTOR', 'MSA'],
+                                    labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU'},
+                                    color_continuous_scale='Tropic')
 
             st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
 
-        # plt.xlabel('AVG MULTIFAMILY PPU', fontsize = 18)
-        # plt.ylabel('INVESTOR TYPE', fontsize = 18)
+            mf_chart_2 = px.bar(buyer_rec_df,
+                                x=buyer_rec_df['MF_AVG_PRICE_MM'],
+                                y=buyer_rec_df['MF_AVG_PPU'],
+                                color=buyer_rec_df['INVESTOR_TYPE'],
+                                color_continuous_scale='Tropic',
+                                hover_data=['INVESTOR', 'MSA'],
+                                labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU'},
+                                # height=400,
+                                barmode='group',
+                                )
 
+            st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
+            st.plotly_chart(mf_chart_2, use_container_width=False, sharing="streamlit")
 
         elif sector == 'STRIP CENTER':
             per_unit_valuation = round(buyer_rec_df['SC_AVG_PSF'].mean())
@@ -283,11 +296,12 @@ with st.form("PROPERTY PARAMETERS"):
                                     y=buyer_rec_df['SC_AVG_PSF'],
                                     # hover_data=buyer_rec_df['INVESTOR'],
                                     color=buyer_rec_df['INVESTOR_TYPE'],
+                                    color_continuous_scale='Tropic',
                                     hover_data=['INVESTOR', 'MSA'],
-                                    labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PRICE PSF'},
+                                    labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)'},
                                     # size=buyer_rec_df['SC_VOL_RANK'],
                                     # size=all_investor_idx['TOTAL_VOL_RANK'],
-                                    color_continuous_scale='Tropic')
+                                    )
 
             st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(sc_chart_1, use_container_width=False, sharing="streamlit")
@@ -299,7 +313,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_data=['INVESTOR', 'MSA'],
-                                labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PRICE PSF'},
+                                labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)'},
                                 # height=400,
                                 barmode='group',
                                 )
@@ -307,13 +321,6 @@ with st.form("PROPERTY PARAMETERS"):
 
             st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(sc_chart_2, use_container_width=False, sharing="streamlit")
-
-
-
-            # sc_chart_2 = px.bar(y=buyer_rec_df['INVESTOR_TYPE'],
-            #                     x=buyer_rec_df['SC_AVG_PSF'],
-            #                     color=buyer_rec_df['INVESTOR_TYPE'],
-            #                     color_continuous_scale='Tropic')
 
                 # barmode = "group"
                 #pattern_shape = "nation", pattern_shape_sequence = [".", "x", "+"]
