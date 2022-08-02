@@ -231,9 +231,9 @@ with st.form("PROPERTY PARAMETERS"):
 
 def buyer_rec_max_ppu(val):
     if val == 'United States':
-        color = '#c00ce4'
+        color = 'black'
     else:
-        color = 'white'
+        color = 'pink'
         return f'background-color: {color}'
 
 ## TARGET INVESTOR DATAFRAME ##
@@ -244,6 +244,7 @@ def buyer_rec_max_ppu(val):
         # buyer_rec_df.set_index(0, inplace = True)
 
         ## DATAFRAME STYLING ##
+
         st.dataframe(buyer_rec_df.style.applymap(buyer_rec_max_ppu, subset=['COUNTRY']))
 
 
