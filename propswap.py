@@ -277,8 +277,8 @@ with st.form("PROPERTY PARAMETERS"):
                                 hover_data=['INVESTOR', 'MSA'],
                                 labels={'INVESTOR': 'INVESTOR', 'MF_AVG_PPU': 'AVG. PPU'},
                                 barmode='group',
-                                height=400,
-                                width=400,
+                                # height=400,
+                                # width=400,
                                 )
 
             # st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
@@ -315,8 +315,6 @@ with st.form("PROPERTY PARAMETERS"):
                                 hover_data=['INVESTOR', 'MSA'],
                                 labels={'INVESTOR': 'INVESTOR', 'SC_AVG_PSF': 'AVG. PSF ($)'},
                                 barmode='group',
-                                height=400,
-                                width=400,
                                 )
 
 
@@ -404,31 +402,29 @@ with st.form("PROPERTY PARAMETERS"):
             st.write(f'{per_unit_valuation:.0f}')
 
 
-# style={'textAlign': 'Center', 'border': '4px solid black', 'font-family': 'Arial'}
 
 
-### EXPLAIN QUALITY SCALE ###
-
-
-
-st.success('THANKS FOR PROP/SWAPPING')
 
 ## EXTERNAL LINKS
 
 left_column, right_column = st.columns(2)
-left_button = left_column.button('GITHUB')
-right_button = right_column.button('INVESTOR UNIVERSE')
+left_button = left_column.button('INVESTOR UNIVERSE')
+right_button = right_column.button('GITHUB')
 if left_button:
-    left_column.write('https://github.com/nehat312/prop-swap')
+    left_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 if right_button:
-    right_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
+    right_column.write('https://github.com/nehat312/prop-swap')
 
 
+# st.success('THANKS FOR PROP/SWAPPING')
 # st.warning('NO BUYERS FOUND')
 # st.write('*~PROP/SWAP BETA MODE~*')
 
 st.stop()
 
+
+
+### TRANSLATE QUALITY SCALE TO CAP RATE ###
 
 
 # CONFIG TEMPLATE
