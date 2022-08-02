@@ -416,15 +416,14 @@ if __name__ == "__main__":
 
 ## EXTERNAL LINKS ##
 
-# left_column, right_column = st.columns(2)
-left_column = st.columns(1)
+left_column, right_column = st.columns(2)
 left_button = left_column.button('GITHUB')
-# right_button = right_column.button('INVESTOR UNIVERSE')
+right_button = right_column.button('INVESTOR UNIVERSE')
 if left_button:
     left_column.write('https://github.com/nehat312/prop-swap')
     # left_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
-# if right_button:
-#     right_column.write('')
+if right_button:
+    right_column.write('')
 
 
 # st.success('THANKS FOR PROP/SWAPPING')
