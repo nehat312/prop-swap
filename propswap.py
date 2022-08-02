@@ -229,24 +229,21 @@ with st.form("PROPERTY PARAMETERS"):
           sub_buyer_recs = pd.DataFrame(data = sub_buyer_recs, columns = sub_cols)
         return sub_buyer_recs
 
-## INVESTOR RECOMMENDATIONS ##
+def buyer_rec_max_ppu(val):
+    if val == 'United States':
+        color = '#c00ce4'
+    else:
+        color = 'white'
+        return f'background-color: {color}'
+
+## TARGET INVESTOR DATAFRAME ##
     if params_submit:
         st.write("RECOMMENDED INVESTOR POOL:")
         buyer_rec_df = filter_buyers(sector, prop_size, min_prop_price, prop_qual)
         # buyer_rec_df = buyer_rec_df.set_index('INVESTOR')
         # buyer_rec_df.set_index(0, inplace = True)
 
-        st.dataframe(buyer_rec_df) # st.dataframe(buyer_rec_df.style.highlight_max(axis=0))
-
-##
-        def buyer_rec_max_ppu(val):
-            if val == 'United States':
-                color = 'green'
-            else:
-                color = 'white'
-            return f'background-color: {color}'
-
-        # Using Style for the Dataframe
+        ## DATAFRAME STYLING ##
         st.dataframe(buyer_rec_df.style.applymap(buyer_rec_max_ppu, subset=['COUNTRY']))
 
 
