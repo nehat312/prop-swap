@@ -263,7 +263,7 @@ with st.form("PROPERTY PARAMETERS"):
                                     # hover_data=buyer_rec_df['INVESTOR'],
                                     color=buyer_rec_df['INVESTOR_TYPE'],
                                     hover_data=['INVESTOR', 'MSA'],
-                                    labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU'},
+                                    labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     color_continuous_scale='Tropic')
 
             st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
@@ -275,7 +275,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_data=['INVESTOR', 'MSA'],
-                                labels={'INVESTOR': 'INVESTOR', 'MF_AVG_PPU': 'AVG. PPU'},
+                                labels={'INVESTOR': 'INVESTOR', 'MF_AVG_PPU': 'AVG. PPU', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
                                 # height=400,
                                 # width=400,
@@ -299,7 +299,7 @@ with st.form("PROPERTY PARAMETERS"):
                                     color=buyer_rec_df['INVESTOR_TYPE'],
                                     color_continuous_scale='Tropic',
                                     hover_data=['INVESTOR', 'MSA'],
-                                    labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)'},
+                                    labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     # size=buyer_rec_df['SC_VOL_RANK'],
                                     # size=all_investor_idx['TOTAL_VOL_RANK'],
                                     )
@@ -308,7 +308,7 @@ with st.form("PROPERTY PARAMETERS"):
             st.plotly_chart(sc_chart_1, use_container_width=False, sharing="streamlit")
 
             sc_chart_2 = px.bar(buyer_rec_df,
-                                x=buyer_rec_df['SC_AVG_PRICE_MM'],
+                                x=buyer_rec_df['INVESTOR'],
                                 y=buyer_rec_df['SC_AVG_PSF'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
