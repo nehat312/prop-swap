@@ -26,20 +26,6 @@
   * Enables an unfair advantage for larger, well-capitalized institutional investors, while smaller investors are forced to either contract a broker, assume costs for subscription services, or move forward with incomplete data.
 
 
-## IMPORTS DICTIONARY
-
-  * INVESTOR INDEX - MULTIPLE SOURCES
-  * Real Capital Analytics - Quarterly Real Estate Transaction Data (2001-2019)
-  * Polygon - Quarterly Balance Sheets (2011-2019) 
-  * Yahoo Finance - Quarterly Balance Sheets (2020-2021)
-    * Company Information
-    * Market / Trading Data
-    * Operating Financials
-    * Equity Research Ratings
-    * Institutional Shareholders
-
-
-
 ## BACKGROUND
 
 * Commercial real estate industry is historically very sensitive to interest rate fluctuations, financing availability, and property tax rates.
@@ -64,12 +50,11 @@
 * Valuation of each real estate sector alongside one another allows for exploration of alternative or untested potential correlation across the sector, namely throuogh quarterly trading volume or total share price returns over bands of time.
 
 
-## CONCLUSIONS / RECOMMENDATIONS
+## NEXT STEPS
 * LOCATION is a key element absent from this analysis.
 * Immediate steps forward:
     * Determinine methodology for location parameters
     * Refine / augment investor base
-
 
 
 ## SOURCES / REFERENCES
