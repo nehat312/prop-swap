@@ -270,7 +270,7 @@ with st.form("PROPERTY PARAMETERS"):
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
 
             mf_chart_2 = px.bar(buyer_rec_df,
-                                x=buyer_rec_df['INVESTOR_TYPE'],
+                                x=buyer_rec_df['INVESTOR'],
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
