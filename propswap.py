@@ -270,12 +270,12 @@ with st.form("PROPERTY PARAMETERS"):
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
 
             mf_chart_2 = px.bar(buyer_rec_df,
-                                x=buyer_rec_df['MF_AVG_PRICE_MM'],
+                                x=buyer_rec_df['INVESTOR_TYPE'],
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_data=['INVESTOR', 'MSA'],
-                                labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU'},
+                                labels={'INVESTOR_TYPE': 'INVESTOR TYPE', 'MF_AVG_PPU': 'AVG. PPU'},
                                 # height=400,
                                 barmode='group',
                                 )
@@ -313,7 +313,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_data=['INVESTOR', 'MSA'],
-                                labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)'},
+                                labels={'INVESTOR_TYPE': 'INVESTOR TYPE', 'SC_AVG_PSF': 'AVG. PSF ($)'},
                                 # height=400,
                                 barmode='group',
                                 )
