@@ -34,12 +34,8 @@ import plotly.express as px
 
 ## DATA IMPORTS ##
 
-engine_csv = r'https://raw.githubusercontent.com/nehat312/command-center/main/prop-swap/data/engine.csv'
-# engine_xlsx = r'https://raw.githubusercontent.com/nehat312/command-center/main/prop-swap/data/engine.csv'
-
+engine_csv = r'https://raw.githubusercontent.com/nehat312/prop-swap/main/data/engine.csv'
 all_investor_idx = pd.read_csv(engine_csv) #, header=0, index_col=0 #, encoding='utf-8'
-#all_investor_idx = pd.read_excel(INVESTORS_PATH, sheet_name='PROPSWAP', header=0) #, engine='openpyxl'
-
 
 ## VARIABLE ASSIGNMENT
 
