@@ -70,8 +70,6 @@ sub_cols = ['INVESTOR', 'INVESTOR_TYPE', 'SUB_AVG_PRICE_MM', 'SUB_SF_PROP', 'SUB
 
 st.container()
 
-
-
 st.title('PROP/SWAP')
 st.subheader('*VIRTUAL CRE BROKER*')
 
@@ -90,6 +88,8 @@ hide_menu_style = """
 
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
+# st.sidebar.xyz
+
 
 prop_params_header = st.header('INPUT PROPERTY PARAMETERS:')
 
@@ -99,8 +99,7 @@ sector = st.selectbox('PROPERTY TYPE:',
                        "FULL-SERVICE HOTEL", "LIMITED-SERVICE HOTEL",
                        "CBD OFFICE", "SUBURBAN OFFICE")
                       )
-### ***
-# st.sidebar.number_input
+
 
 with st.form("PROPERTY PARAMETERS"):
     if sector == "MULTIFAMILY":
@@ -245,20 +244,14 @@ with st.form("PROPERTY PARAMETERS"):
 
 ##
         def buyer_rec_max_ppu(val):
-            if val > 21:
+            if val == 'United States':
                 color = 'green'
             else:
-                color = 'red'
-
-
-        return f'background-color: {color}'
-        # Our example Dataset
-        data = [['Tom', 23], ['Nick', 18], ['Bob', 20], ['Martin', 25]]
-        # Create Pandas DataFrame
-        df = pd.DataFrame(data, columns=['Name', 'Age'])
+                color = 'white'
+            return f'background-color: {color}'
 
         # Using Style for the Dataframe
-        st.dataframe(df.style.applymap(color_df, subset=['Age']))
+        st.dataframe(buyer_rec_df.style.applymap(buyer_rec_max_ppu, subset=['COUNTRY']))
 
 
 ## VALUATION METRICS ##
