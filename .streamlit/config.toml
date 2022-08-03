@@ -23,9 +23,8 @@ font="monospace"
 
 ## COLOR LIBRARY ##
 
-#dark-blueOG:"#001440"
 #dark-blue2:"#152238"
-
+#dark-blue-OG:"#001440"
 #dark-black: "#1B1E1F"
 #space-black: "#1A1A1D"
 #space-black2: "#17252A"
@@ -33,7 +32,8 @@ font="monospace"
 #space-gray:"#282828"
 #space-gray2: "#2C3531"
 
-#alien-green: "#EDF5E1"
+#alien-green-OG: "#EDF5E1"
+#alien-green2: "#2BDB6B"
 #bright-teal: "#66FCF1"
 
 
