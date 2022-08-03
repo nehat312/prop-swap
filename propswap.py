@@ -273,8 +273,8 @@ with st.form("PROPERTY PARAMETERS"):
                                     color=buyer_rec_df['INVESTOR_TYPE'],
                                     color_continuous_scale='Tropic',
                                     hover_name=buyer_rec_df['INVESTOR'],
-                                    hover_data=buyer_rec_df[['INVESTOR', 'MSA']],
-                                    labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                    hover_data=buyer_rec_df[['MSA']],
+                                    labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PRICE/UNIT ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     )
 
             st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
@@ -286,11 +286,10 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_name=buyer_rec_df['INVESTOR'],
-                                hover_data=buyer_rec_df[['INVESTOR', 'MSA']],
-                                labels={'INVESTOR': 'INVESTOR', 'MF_AVG_PPU': 'AVG. PPU', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                hover_data=buyer_rec_df[['MSA']],
+                                labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PRICE/UNIT ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
-                                # height=400,
-                                # width=400,
+                                # height=400, # width=400,
                                 )
 
             # st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
@@ -307,13 +306,12 @@ with st.form("PROPERTY PARAMETERS"):
             sc_chart_1 = px.scatter(buyer_rec_df,  # all_investor_idx
                                     x=buyer_rec_df['SC_AVG_PRICE_MM'],
                                     y=buyer_rec_df['SC_AVG_PSF'],
-                                    # hover_data=buyer_rec_df['INVESTOR'],
                                     color=buyer_rec_df['INVESTOR_TYPE'],
                                     color_continuous_scale='Tropic',
                                     hover_name=buyer_rec_df['INVESTOR'],
-                                    hover_data=buyer_rec_df[['INVESTOR', 'MSA']],
+                                    hover_data=buyer_rec_df[['MSA']],
                                     title='TARGETED VALUATION RANGE',
-                                    labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                    labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PRICE/SF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     # size=buyer_rec_df['SC_VOL_RANK'],
                                     )
 
@@ -326,9 +324,9 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_name=buyer_rec_df['INVESTOR'],
-                                hover_data=buyer_rec_df['INVESTOR', 'MSA'],
+                                hover_data=buyer_rec_df['MSA'],
                                 title='TARGETED VALUATION RANGE',
-                                labels={'INVESTOR': 'INVESTOR', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                labels={'INVESTOR': 'INVESTOR', 'SC_AVG_PSF': 'AVG. PRICE/SF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
                                 )
 
