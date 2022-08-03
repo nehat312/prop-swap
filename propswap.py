@@ -273,7 +273,7 @@ with st.form("PROPERTY PARAMETERS"):
                                     color=buyer_rec_df['INVESTOR_TYPE'],
                                     color_continuous_scale='Tropic',
                                     hover_name=buyer_rec_df['INVESTOR'],
-                                    hover_data=buyer_rec_df['INVESTOR', 'MSA'],
+                                    hover_data=buyer_rec_df[['INVESTOR', 'MSA']],
                                     labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     )
 
@@ -286,7 +286,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_name=buyer_rec_df['INVESTOR'],
-                                hover_data=buyer_rec_df['INVESTOR', 'MSA'],
+                                hover_data=buyer_rec_df[['INVESTOR', 'MSA']],
                                 labels={'INVESTOR': 'INVESTOR', 'MF_AVG_PPU': 'AVG. PPU', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
                                 # height=400,
@@ -311,7 +311,7 @@ with st.form("PROPERTY PARAMETERS"):
                                     color=buyer_rec_df['INVESTOR_TYPE'],
                                     color_continuous_scale='Tropic',
                                     hover_name=buyer_rec_df['INVESTOR'],
-                                    hover_data=buyer_rec_df['INVESTOR', 'MSA'],
+                                    hover_data=buyer_rec_df[['INVESTOR', 'MSA']],
                                     title='TARGETED VALUATION RANGE',
                                     labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     # size=buyer_rec_df['SC_VOL_RANK'],
