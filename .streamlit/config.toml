@@ -2,7 +2,7 @@
 
 ## ALIEN ##
 primaryColor="#09ff00"
-backgroundColor="#282828" #"#001440"
+backgroundColor="#1B1E1F"
 secondaryBackgroundColor="#020202"
 textColor="#09ff00"
 font="monospace"
@@ -21,19 +21,18 @@ font="monospace"
 # textColor="#EDF5E1"
 # font="monospace"
 
-## TBU ##
-# primaryColor="#"
-# backgroundColor="#"
-# secondaryBackgroundColor="#"
-# textColor="#"
-# font="#"
+## COLOR LIBRARY ##
 
-## TBU ##
-# primaryColor="#"
-# backgroundColor="#"
-# secondaryBackgroundColor="#"
-# textColor="#"
-# font="#"
+#dark-blue:"#001440"
+#dark-black: "#1B1E1F"
+#space-black: "#1A1A1D"
+#space-black2: "#17252A"
+#space-black3: "#19181A"
+#space-gray:"#282828"
+#space-gray2: "#2C3531"
+
+#bright-teal: "#66FCF1"
+
 
 ## TBU ##
 # primaryColor="#"
