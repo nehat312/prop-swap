@@ -2,7 +2,7 @@
 
 ## ALIEN ##
 primaryColor="#09ff00"
-backgroundColor="#1B1E1F"
+backgroundColor="#152238" #"#1B1E1F"
 secondaryBackgroundColor="#020202"
 textColor="#09ff00"
 font="monospace"
@@ -23,7 +23,9 @@ font="monospace"
 
 ## COLOR LIBRARY ##
 
-#dark-blue:"#001440"
+#dark-blueOG:"#001440"
+#dark-blue2:"#152238"
+
 #dark-black: "#1B1E1F"
 #space-black: "#1A1A1D"
 #space-black2: "#17252A"
@@ -31,6 +33,7 @@ font="monospace"
 #space-gray:"#282828"
 #space-gray2: "#2C3531"
 
+#alien-green: "#EDF5E1"
 #bright-teal: "#66FCF1"
 
 
