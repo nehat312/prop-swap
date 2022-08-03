@@ -31,7 +31,11 @@ from PIL import Image
 
 ## VISUAL SETTINGS ##
 
+pd.options.display.float_format = '${:,.2f}'.format
 # pd.set_option('display.max_colwidth', 200)
+# fig = px.colors.qualitative.swatches()
+# fig.show()
+
 
 ## DATA IMPORTS ##
 
@@ -79,6 +83,7 @@ hide_menu_style = """
 
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
+
 ## INTRODUCTION ##
 st.container()
 
@@ -95,6 +100,7 @@ sector = st.selectbox('PROPERTY TYPE:',
                       )
 
 # img = Image.open('untitled.jpg')
+
 # st.sidebar.xyz
 
 with st.form("PROPERTY PARAMETERS"):
@@ -127,15 +133,11 @@ with st.form("PROPERTY PARAMETERS"):
         #min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
 
 
-    prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:',
-                             list(range(1,6,1)))
+    prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
 
-    # prop_cap_rate = st.selectbox('*EST. CAP RATE:',
-    #                          list(range(1, 6, 1)))
+    # prop_cap_rate = st.selectbox('*EST. CAP RATE:', list(range(1, 6, 1)))
 
     # property_region = st.selectbox('*PROPERTY REGION:', ("NORTHEAST", "MID-ATLANTIC", "SOUTHEAST", "WEST", "NORTHWEST", "MIDWEST", "SOUTHWEST"))
-
-    params_submit = st.form_submit_button("PROP/SWAP")
 
     # if min_prop_price == 0:
     #     st.write('PLEASE INPUT VALUE ABOVE $0')
@@ -145,7 +147,7 @@ with st.form("PROPERTY PARAMETERS"):
     #     implied_ppu = st.markdown(round(min_prop_price * 1_000_000 / prop_size))
 
 
-### PICKLE PICKLE PICKLE ###
+    params_submit = st.form_submit_button("PROP/SWAP")
 
     @st.cache(persist=True, allow_output_mutation=True)
     def filter_buyers(sector, prop_size, min_prop_price, prop_qual):
@@ -238,14 +240,22 @@ with st.form("PROPERTY PARAMETERS"):
         # buyer_rec_df.set_index(0, inplace = True)
 
         ## DATAFRAME STYLING ##
-        def buyer_rec_max_ppu(val):
+
+        def df_style_map(val):
             if val == 'United States':
                 color = 'black'
             else:
                 color = 'pink'
                 return f'background-color: {color}'
 
-        st.dataframe(buyer_rec_df.style.applymap(buyer_rec_max_ppu, subset=['COUNTRY']))
+
+            # if val == 'United States':
+            #     color = 'black'
+            # else:
+            #     color = 'pink'
+            #     return f'background-color: {color}'
+
+        st.dataframe(buyer_rec_df.style.applymap(df_style_map, subset=['COUNTRY']))
 
 
 ## VALUATION METRICS ##
@@ -260,11 +270,12 @@ with st.form("PROPERTY PARAMETERS"):
             mf_chart_1 = px.scatter(buyer_rec_df, #all_investor_idx
                                     x=buyer_rec_df['MF_AVG_PRICE_MM'],
                                     y=buyer_rec_df['MF_AVG_PPU'],
-                                    # hover_data=buyer_rec_df['INVESTOR'],
                                     color=buyer_rec_df['INVESTOR_TYPE'],
+                                    color_continuous_scale='Tropic',
+                                    hover_name=['INVESTOR'],
                                     hover_data=['INVESTOR', 'MSA'],
                                     labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
-                                    color_continuous_scale='Tropic')
+                                    )
 
             st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
@@ -274,6 +285,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
+                                hover_name=['INVESTOR'],
                                 hover_data=['INVESTOR', 'MSA'],
                                 labels={'INVESTOR': 'INVESTOR', 'MF_AVG_PPU': 'AVG. PPU', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
@@ -299,12 +311,13 @@ with st.form("PROPERTY PARAMETERS"):
                                     color=buyer_rec_df['INVESTOR_TYPE'],
                                     color_continuous_scale='Tropic',
                                     hover_data=['INVESTOR', 'MSA'],
+                                    title='TARGETED VALUATION RANGE',
                                     labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     # size=buyer_rec_df['SC_VOL_RANK'],
                                     # size=all_investor_idx['TOTAL_VOL_RANK'],
                                     )
 
-            st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
+            # st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(sc_chart_1, use_container_width=False, sharing="streamlit")
 
             sc_chart_2 = px.bar(buyer_rec_df,
@@ -313,6 +326,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_data=['INVESTOR', 'MSA'],
+                                title='TARGETED VALUATION RANGE',
                                 labels={'INVESTOR': 'INVESTOR', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
                                 )
