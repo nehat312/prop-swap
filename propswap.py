@@ -324,7 +324,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='Tropic',
                                 hover_name=buyer_rec_df['INVESTOR'],
-                                hover_data=buyer_rec_df['MSA'],
+                                hover_data=buyer_rec_df[['MSA']],
                                 title='TARGETED VALUATION RANGE',
                                 labels={'INVESTOR': 'INVESTOR', 'SC_AVG_PSF': 'AVG. PRICE/SF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
