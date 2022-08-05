@@ -267,11 +267,10 @@ with st.form("PROPERTY PARAMETERS"):
                                     x=buyer_rec_df['MF_AVG_PRICE_MM'],
                                     y=buyer_rec_df['MF_AVG_PPU'],
                                     # color=buyer_rec_df['INVESTOR_TYPE'],
-                                    color=buyer_rec_df['MF_AVG_PRICE_MM'],
+                                    color=buyer_rec_df['MF_AVG_PRICE_PPU'],
                                     color_continuous_scale='YlOrRd', #'Tropic',
                                     hover_name=buyer_rec_df['INVESTOR'],
                                     hover_data=buyer_rec_df[['MSA']],
-                                    animation_group=buyer_rec_df['INVESTOR'],
                                     title='TARGETED INVESTOR POOL',
                                     labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     )
