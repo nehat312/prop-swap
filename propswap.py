@@ -299,10 +299,8 @@ with st.form("PROPERTY PARAMETERS"):
         elif sector == 'STRIP CENTER':
             per_unit_valuation = round(buyer_rec_df['SC_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE PSF:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/SF')
             st.write("TARGETED INVESTOR POOL:")
             st.dataframe(buyer_rec_df)
 
@@ -353,66 +351,66 @@ with st.form("PROPERTY PARAMETERS"):
         elif sector == 'NNN RETAIL':
             per_unit_valuation = round(buyer_rec_df['NNN_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE PSF:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/SF')
+            st.write("TARGETED INVESTOR POOL:")
+            st.dataframe(buyer_rec_df)
 
         elif sector == 'MALL':
             per_unit_valuation = round(buyer_rec_df['MALL_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE PSF:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/SF')
+            st.write("TARGETED INVESTOR POOL:")
+            st.dataframe(buyer_rec_df)
 
         elif sector == 'SELF-STORAGE':
             per_unit_valuation = round(buyer_rec_df['SS_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE PSF:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/SF')
+            st.write("TARGETED INVESTOR POOL:")
+            st.dataframe(buyer_rec_df)
 
         elif sector == 'INDUSTRIAL':
             per_unit_valuation = round(buyer_rec_df['IND_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE PSF:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/SF')
+            st.write("TARGETED INVESTOR POOL:")
+            st.dataframe(buyer_rec_df)
 
         elif sector == 'FULL-SERVICE HOTEL':
             per_unit_valuation = round(buyer_rec_df['FS_AVG_PPK'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE / KEY:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/KEY')
+            st.write("TARGETED INVESTOR POOL:")
+            st.dataframe(buyer_rec_df)
 
         elif sector == 'LIMITED-SERVICE HOTEL':
             per_unit_valuation = round(buyer_rec_df['LS_AVG_PPK'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE / KEY:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/KEY')
+            st.write("TARGETED INVESTOR POOL:")
+            st.dataframe(buyer_rec_df)
 
         elif sector == 'CBD OFFICE':
             per_unit_valuation = round(buyer_rec_df['CBD_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE PSF:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/SF')
+            st.write("TARGETED INVESTOR POOL:")
+            st.dataframe(buyer_rec_df)
 
         elif sector == 'SUB OFFICE':
             per_unit_valuation = round(buyer_rec_df['SUB_AVG_PSF'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED VALUE PSF:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write(f'ESTIMATED PROPERTY VALUATION:')
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}$/SF')
+            st.write("TARGETED INVESTOR POOL:")
+            st.dataframe(buyer_rec_df)
 
 
 #######################
@@ -444,7 +442,6 @@ if right_button:
 # st.write('*~PROP/SWAP BETA MODE~*')
 
 st.stop()
-
 
 
 
