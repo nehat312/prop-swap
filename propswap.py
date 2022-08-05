@@ -276,7 +276,7 @@ with st.form("PROPERTY PARAMETERS"):
 
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
 
-            mf_chart_2 = px.bar(buyer_rec_df.sort_values(by='MF_AVG_PPU'),
+            mf_chart_2 = px.bar(buyer_rec_df,
                                 x=buyer_rec_df['INVESTOR'],
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
@@ -284,7 +284,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
                                 labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
-                                barmode='group',
+                                barmode='relative',
                                 # size=buyer_rec_df['SC_VOL_RANK'],
                                 # height=400, # width=400,
                                 )
