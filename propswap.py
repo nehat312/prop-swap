@@ -236,8 +236,9 @@ with st.form("PROPERTY PARAMETERS"):
 
 ## TARGET INVESTOR DATAFRAME ##
     if params_submit:
-        st.write("TARGETED INVESTOR POOL:")
         buyer_rec_df = filter_buyers(sector, prop_size, min_prop_price, prop_qual)
+
+        # st.write("TARGETED INVESTOR POOL:")
         # st.dataframe(buyer_rec_df)
             # buyer_rec_df = buyer_rec_df.set_index('INVESTOR')
 
@@ -256,10 +257,11 @@ with st.form("PROPERTY PARAMETERS"):
         if sector == 'MULTIFAMILY':
             per_unit_valuation = round(buyer_rec_df['MF_AVG_PPU'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write("ESTIMATED PROPERTY VALUE ($MM):")
-            st.write(f'{(prop_valuation / 1_000_000):.2f}')
-            st.write("ESTIMATED PROPERTY VALUE / UNIT:")
-            st.write(f'{per_unit_valuation:.0f}')
+            st.write("ESTIMATED PROPERTY VALUATION:")
+            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}/UNIT')
+            # st.write("ESTIMATED PROPERTY VALUE / UNIT:")
+            # st.write(f'')
+            st.write("TARGETED INVESTOR POOL:")
             st.dataframe(buyer_rec_df)
 
             mf_chart_1 = px.scatter(buyer_rec_df, #all_investor_idx
@@ -299,6 +301,7 @@ with st.form("PROPERTY PARAMETERS"):
             st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
             st.write(f'{per_unit_valuation:.0f}')
+            st.write("TARGETED INVESTOR POOL:")
             st.dataframe(buyer_rec_df)
 
             sc_chart_1 = px.scatter(buyer_rec_df,  # all_investor_idx
