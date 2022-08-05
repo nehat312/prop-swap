@@ -252,12 +252,15 @@ with st.form("PROPERTY PARAMETERS"):
         #         return f'background-color: {color}'
         #
         # st.dataframe(buyer_rec_df.style.applymap(df_style_map, subset=['COUNTRY']))
+
         ## STYLE DICTIONARY ##
+
         YlOrRd = px.colors.sequential.YlOrRd
         Mint = px.colors.sequential.Mint
         Electric = px.colors.sequential.Electric
         Sunsetdark = px.colors.sequential.Sunsetdark
         Sunset = px.colors.sequential.Sunset
+        Tropic = px.colors.diverging.Tropic
 
 
 
@@ -315,15 +318,15 @@ with st.form("PROPERTY PARAMETERS"):
                                 x=buyer_rec_df['INVESTOR'],
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
-                                color_continuous_scale='YlOrRd', #'Tropic',
-                                color_discrete_sequence=Sunsetdark,
-                                category_orders={'MF_AVG_PPU':'total descending'},
+                                color_continuous_scale=Tropic,
+                                color_discrete_sequence=Tropic,
+                                # category_orders={'total descending'},
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
                                 labels=chart_labels,
                                 barmode='relative',
                                 # size=buyer_rec_df['SC_VOL_RANK'],
-                                # height=400, # width=400,
+                                height=400, # width=400,
                                 )
 
             st.plotly_chart(mf_chart_2, use_container_width=False, sharing="streamlit")
