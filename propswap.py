@@ -257,8 +257,7 @@ with st.form("PROPERTY PARAMETERS"):
         if sector == 'MULTIFAMILY':
             per_unit_valuation = round(buyer_rec_df['MF_AVG_PPU'].mean())
             prop_valuation = per_unit_valuation * prop_size
-            st.write(f'ESTIMATED PROPERTY VALUATION:')
-            st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}/UNIT')
+            st.write(f'ESTIMATED PROPERTY VALUATION: ${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}/UNIT')
             # st.metric('ESTIMATED PROPERTY VALUATION: $', (prop_valuation / 1_000_000))
             # st.metric('ESTIMATED PROPERTY VALUATION: $/UNIT', per_unit_valuation)
             st.write("TARGETED INVESTOR POOL:")
