@@ -120,23 +120,18 @@ with st.form("PROPERTY PARAMETERS"):
     if sector == "SUBURBAN OFFICE":
         prop_size = st.number_input('*TOTAL SUB OFFICE SF: [10K-500K SF]', min_value=10000, max_value=500000, step=5000, value=10) # list(range(10000,505000,5000)))
 
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]:', min_value = 0, max_value = 100, value=10, format='$')
+        # min_prop_price = st.slider('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, step = 5)
+        # min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
 
-    min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]:', min_value = 0, max_value = 100, value=10, format='$')
-    # min_prop_price = st.slider('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, step = 5)
-    # min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
+        prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
 
-    prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
+        # prop_cap_rate = st.selectbox('*EST. CAP RATE:', list(range(1, 6, 1)))
+        # property_region = st.selectbox('*PROPERTY REGION:', ("NORTHEAST", "MID-ATLANTIC", "SOUTHEAST", "WEST", "NORTHWEST", "MIDWEST", "SOUTHWEST"))
 
-    # prop_cap_rate = st.selectbox('*EST. CAP RATE:', list(range(1, 6, 1)))
-
-    # property_region = st.selectbox('*PROPERTY REGION:', ("NORTHEAST", "MID-ATLANTIC", "SOUTHEAST", "WEST", "NORTHWEST", "MIDWEST", "SOUTHWEST"))
-
-    # if min_prop_price == 0:
-    #     st.write('PLEASE INPUT VALUE ABOVE $0')
-
-    # elif min_prop_price > 0:
-    #     implied_ppu_title = st.write('*IMPLIED VALUE / UNIT:')
-    #     implied_ppu = st.markdown(round(min_prop_price * 1_000_000 / prop_size))
+        # elif min_prop_price > 0:
+        #     implied_ppu_title = st.write('*IMPLIED VALUE / UNIT:')
+        #     implied_ppu = st.markdown(round(min_prop_price * 1_000_000 / prop_size))
 
 
     params_submit = st.form_submit_button("PROP/SWAP")
