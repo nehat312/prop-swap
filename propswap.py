@@ -274,7 +274,6 @@ with st.form("PROPERTY PARAMETERS"):
                                     labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     )
 
-            st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
 
             mf_chart_2 = px.bar(buyer_rec_df,
@@ -290,7 +289,6 @@ with st.form("PROPERTY PARAMETERS"):
                                 # height=400, # width=400,
                                 )
 
-            # st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(mf_chart_2, use_container_width=False, sharing="streamlit")
 
         elif sector == 'STRIP CENTER':
@@ -312,7 +310,6 @@ with st.form("PROPERTY PARAMETERS"):
                                     labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     )
 
-            # st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(sc_chart_1, use_container_width=False, sharing="streamlit")
 
             sc_chart_2 = px.bar(buyer_rec_df,
@@ -327,8 +324,8 @@ with st.form("PROPERTY PARAMETERS"):
                                 barmode='group',
                                 )
 
-
             st.plotly_chart(sc_chart_2, use_container_width=False, sharing="streamlit")
+
 
             #pattern_shape = "nation", pattern_shape_sequence = [".", "x", "+"]
 
