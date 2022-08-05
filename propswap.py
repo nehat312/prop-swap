@@ -317,7 +317,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='YlOrRd', #'Tropic',
                                 color_discrete_sequence=Sunsetdark,
-                                category_orders={'INVESTOR_TYPE':'total descending'},
+                                category_orders={'MF_AVG_PPU':'total descending'},
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
                                 labels=chart_labels,
