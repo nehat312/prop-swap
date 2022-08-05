@@ -259,8 +259,8 @@ with st.form("PROPERTY PARAMETERS"):
             prop_valuation = per_unit_valuation * prop_size
             st.write(f'ESTIMATED PROPERTY VALUATION:')
             st.write(f'${(prop_valuation / 1_000_000):.2f}MM or {per_unit_valuation:.0f}/UNIT')
-            st.metric('ESTIMATED PROPERTY VALUATION: $', {(prop_valuation / 1_000_000)})
-            st.metric('ESTIMATED PROPERTY VALUATION: $/UNIT', {per_unit_valuation})
+            st.metric('ESTIMATED PROPERTY VALUATION: $', (prop_valuation / 1_000_000))
+            st.metric('ESTIMATED PROPERTY VALUATION: $/UNIT', per_unit_valuation)
             # st.write("ESTIMATED PROPERTY VALUE / UNIT:")
             # st.write(f'')
             st.write("TARGETED INVESTOR POOL:")
