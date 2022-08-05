@@ -270,6 +270,7 @@ with st.form("PROPERTY PARAMETERS"):
                                     color_continuous_scale='Tropic',
                                     hover_name=buyer_rec_df['INVESTOR'],
                                     hover_data=buyer_rec_df[['MSA']],
+                                    animation_group=buyer_rec_df['INVESTOR'],
                                     title='TARGETED INVESTOR POOL',
                                     labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     )
@@ -321,7 +322,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 hover_data=buyer_rec_df[['MSA']],
                                 title='EST. VALUATION RANGE ($ PSF)',
                                 labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
-                                barmode='group',
+                                barmode='relative',
                                 )
 
             st.plotly_chart(sc_chart_2, use_container_width=False, sharing="streamlit")
