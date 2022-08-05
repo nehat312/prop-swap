@@ -282,6 +282,8 @@ with st.form("PROPERTY PARAMETERS"):
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='YlOrRd', #'Tropic',
+                                category_orders='total descending',
+                                # xaxis={'categoryorder':'total descending'}
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
                                 labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
