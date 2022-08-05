@@ -253,6 +253,32 @@ with st.form("PROPERTY PARAMETERS"):
         #
         # st.dataframe(buyer_rec_df.style.applymap(df_style_map, subset=['COUNTRY']))
 
+## STYLE DICTIONARY ##
+
+YlOrRd = px.colors.sequential.YlOrRd
+chart_labels = {'INVESTOR_TYPE': 'INVESTOR TYPE',
+                'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'MF_AVG_PPU': 'AVG. PPU ($)',
+                'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'SC_AVG_PSF': 'AVG. PSF ($)',
+                'NNN_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'NNN_AVG_PSF': 'AVG. PSF ($)',
+                'MALL_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'MALL_AVG_PSF': 'AVG. PSF ($)',
+                'IND_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'IND_AVG_PSF': 'AVG. PSF ($)',
+                'SS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'SS_AVG_PSF': 'AVG. PSF ($)',
+                'CBD_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'CBD_AVG_PSF': 'AVG. PSF ($)',
+                'SUB_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'SUB_AVG_PSF': 'AVG. PSF ($)',
+                'FS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'FS_AVG_PSF': 'AVG. PSF ($)',
+                'LS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                'LS_AVG_PSF': 'AVG. PSF ($)',
+                },
+
 ## VALUATION METRICS ##
         if sector == 'MULTIFAMILY':
             per_unit_valuation = round(buyer_rec_df['MF_AVG_PPU'].mean())
@@ -272,20 +298,22 @@ with st.form("PROPERTY PARAMETERS"):
                                     hover_name=buyer_rec_df['INVESTOR'],
                                     hover_data=buyer_rec_df[['MSA']],
                                     title='TARGETED INVESTOR POOL',
-                                    labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                    labels=chart_labels,
                                     )
 
             st.plotly_chart(mf_chart_1, use_container_width=False, sharing="streamlit")
+
 
             mf_chart_2 = px.bar(buyer_rec_df,
                                 x=buyer_rec_df['INVESTOR'],
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='YlOrRd', #'Tropic',
+                                color_discrete_sequence=YlOrRd,
                                 category_orders={'INVESTOR_TYPE':'total descending'},
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
-                                labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                labels=chart_labels,
                                 barmode='relative',
                                 # size=buyer_rec_df['SC_VOL_RANK'],
                                 # height=400, # width=400,
