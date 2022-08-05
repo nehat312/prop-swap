@@ -10,8 +10,8 @@ import seaborn as sns
 
 import plotly as ply
 import plotly.express as px
-# from plotly.subplots import make_subplots
-# import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
 from PIL import Image
 
@@ -101,46 +101,44 @@ sector = st.selectbox('PROPERTY TYPE:',
 with st.form("PROPERTY PARAMETERS"):
     if sector == "MULTIFAMILY":
         prop_size = st.number_input('*TOTAL MF UNITS [25-1,000 UNITS]', min_value=25, max_value=500, step=25, value=100) #list(range(25,750,25)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
     if sector == "FULL-SERVICE HOTEL":
         prop_size = st.number_input('*TOTAL FS KEYS [25-1,000 KEYS]', min_value=25, max_value=750, step=25, value=100) #list(range(25,750,25)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
     if sector == "LIMITED-SERVICE HOTEL":
         prop_size = st.number_input('*TOTAL LS KEYS [25-1,000 KEYS]', min_value=25, max_value=750, step=25, value=100) #list(range(25,750,25)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
     if sector == "STRIP CENTER":
         prop_size = st.number_input('*TOTAL SC SF [5K-500K SF]', min_value=5000, max_value=500000, step=5000, value=50000) #list(range(5000,505000,5000)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
     if sector == "NNN RETAIL":
         prop_size = st.number_input('*TOTAL NNN SF [5K-500K SF]', min_value=5000, max_value=500000, step=5000, value=50000) #list(range(5000,505000,5000)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
     if sector == "MALL":
         prop_size = st.number_input('*TOTAL MALL SF [50K-1MM SF]', min_value=50000, max_value=500000, step=5000, value=250000) #list(range(50000,1010000,10000)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
     if sector == "SELF-STORAGE":
         prop_size = st.number_input('*TOTAL SELF-STORAGE SF [5K-500K SF]', min_value=0, max_value=500000, step=2500, value=100) #list(range(0,525000,25000)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
-        prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+        prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
     if sector == "INDUSTRIAL":
         prop_size = st.number_input('*TOTAL INDUSTRIAL SF [5K-1MM SF]', min_value=10000, max_value=500000, step=5000, value=10) #list(range(5000,1005000,5000)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
-        prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+        prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
     if sector == "CBD OFFICE":
         prop_size = st.number_input('*TOTAL CBD OFFICE SF [10K-500K SF]', min_value=10000, max_value=500000, step=5000, value=10) #list(range(10000,505000,5000)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
-        prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+        prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
     if sector == "SUBURBAN OFFICE":
         prop_size = st.number_input('*TOTAL SUB OFFICE SF: [10K-500K SF]', min_value=10000, max_value=500000, step=5000, value=10) # list(range(10000,505000,5000)))
-        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10)
+        min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
-
-        # prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
 
         # prop_cap_rate = st.selectbox('*EST. CAP RATE:', list(range(1, 6, 1)))
         # property_region = st.selectbox('*PROPERTY REGION:', ("NORTHEAST", "MID-ATLANTIC", "SOUTHEAST", "WEST", "NORTHWEST", "MIDWEST", "SOUTHWEST"))
@@ -240,27 +238,20 @@ with st.form("PROPERTY PARAMETERS"):
     if params_submit:
         st.write("TARGETED INVESTOR POOL:")
         buyer_rec_df = filter_buyers(sector, prop_size, min_prop_price, prop_qual)
+        st.dataframe(buyer_rec_df)
         # buyer_rec_df = buyer_rec_df.set_index('INVESTOR')
         # buyer_rec_df.set_index(0, inplace = True)
 
         ## DATAFRAME STYLING ##
 
-        def df_style_map(val):
-            if val == 'United States':
-                color = 'black'
-            else:
-                color = 'pink'
-                return f'background-color: {color}'
-
-
-            # if val == 'United States':
-            #     color = 'black'
-            # else:
-            #     color = 'pink'
-            #     return f'background-color: {color}'
-
-        st.dataframe(buyer_rec_df.style.applymap(df_style_map, subset=['COUNTRY']))
-
+        # def df_style_map(val):
+        #     if val == 'United States':
+        #         color = 'black'
+        #     else:
+        #         color = 'pink'
+        #         return f'background-color: {color}'
+        #
+        # st.dataframe(buyer_rec_df.style.applymap(df_style_map, subset=['COUNTRY']))
 
 ## VALUATION METRICS ##
         if sector == 'MULTIFAMILY':
@@ -270,6 +261,7 @@ with st.form("PROPERTY PARAMETERS"):
             st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED PROPERTY VALUE / UNIT:")
             st.write(f'{per_unit_valuation:.0f}')
+            st.dataframe(buyer_rec_df)
 
             mf_chart_1 = px.scatter(buyer_rec_df, #all_investor_idx
                                     x=buyer_rec_df['MF_AVG_PRICE_MM'],
@@ -308,6 +300,7 @@ with st.form("PROPERTY PARAMETERS"):
             st.write(f'{(prop_valuation / 1_000_000):.2f}')
             st.write("ESTIMATED VALUE PSF:")
             st.write(f'{per_unit_valuation:.0f}')
+            st.dataframe(buyer_rec_df)
 
             sc_chart_1 = px.scatter(buyer_rec_df,  # all_investor_idx
                                     x=buyer_rec_df['SC_AVG_PRICE_MM'],
