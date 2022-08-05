@@ -326,7 +326,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 labels=chart_labels,
                                 barmode='relative',
                                 # size=buyer_rec_df['SC_VOL_RANK'],
-                                height=400, # width=400,
+                                height=800, # width=400,
                                 )
 
             st.plotly_chart(mf_chart_2, use_container_width=False, sharing="streamlit")
