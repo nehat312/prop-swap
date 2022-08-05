@@ -254,7 +254,6 @@ with st.form("PROPERTY PARAMETERS"):
         # st.dataframe(buyer_rec_df.style.applymap(df_style_map, subset=['COUNTRY']))
         ## STYLE DICTIONARY ##
         YlOrRd = px.colors.sequential.YlOrRd
-        Tropic = px.colors.sequential.Tropic
         Mint = px.colors.sequential.Mint
         Electric = px.colors.sequential.Electric
 
@@ -300,7 +299,7 @@ with st.form("PROPERTY PARAMETERS"):
                                     # color=buyer_rec_df['INVESTOR_TYPE'],
                                     color=buyer_rec_df['MF_AVG_PPU'],
                                     color_continuous_scale='YlOrRd', #'Tropic',
-                                    color_discrete_sequence=Tropic,
+                                    color_discrete_sequence=Electric,
                                     hover_name=buyer_rec_df['INVESTOR'],
                                     hover_data=buyer_rec_df[['MSA']],
                                     title='TARGETED INVESTOR POOL',
@@ -315,7 +314,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='YlOrRd', #'Tropic',
-                                color_discrete_sequence=Tropic,
+                                color_discrete_sequence=Electric,
                                 category_orders={'INVESTOR_TYPE':'total descending'},
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
