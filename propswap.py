@@ -238,9 +238,8 @@ with st.form("PROPERTY PARAMETERS"):
     if params_submit:
         st.write("TARGETED INVESTOR POOL:")
         buyer_rec_df = filter_buyers(sector, prop_size, min_prop_price, prop_qual)
-        st.dataframe(buyer_rec_df)
-        # buyer_rec_df = buyer_rec_df.set_index('INVESTOR')
-        # buyer_rec_df.set_index(0, inplace = True)
+        # st.dataframe(buyer_rec_df)
+            # buyer_rec_df = buyer_rec_df.set_index('INVESTOR')
 
         ## DATAFRAME STYLING ##
 
