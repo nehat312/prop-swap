@@ -252,32 +252,31 @@ with st.form("PROPERTY PARAMETERS"):
         #         return f'background-color: {color}'
         #
         # st.dataframe(buyer_rec_df.style.applymap(df_style_map, subset=['COUNTRY']))
+        ## STYLE DICTIONARY ##
+        YlOrRd = px.colors.sequential.YlOrRd
+        chart_labels = {'INVESTOR_TYPE': 'INVESTOR TYPE',
+                        'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'MF_AVG_PPU': 'AVG. PPU ($)',
+                        'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'SC_AVG_PSF': 'AVG. PSF ($)',
+                        'NNN_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'NNN_AVG_PSF': 'AVG. PSF ($)',
+                        'MALL_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'MALL_AVG_PSF': 'AVG. PSF ($)',
+                        'IND_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'IND_AVG_PSF': 'AVG. PSF ($)',
+                        'SS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'SS_AVG_PSF': 'AVG. PSF ($)',
+                        'CBD_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'CBD_AVG_PSF': 'AVG. PSF ($)',
+                        'SUB_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'SUB_AVG_PSF': 'AVG. PSF ($)',
+                        'FS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'FS_AVG_PSF': 'AVG. PSF ($)',
+                        'LS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
+                        'LS_AVG_PSF': 'AVG. PSF ($)',
+                        }
 
-## STYLE DICTIONARY ##
-
-YlOrRd = px.colors.sequential.YlOrRd
-chart_labels = {'INVESTOR_TYPE': 'INVESTOR TYPE',
-                'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'MF_AVG_PPU': 'AVG. PPU ($)',
-                'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'SC_AVG_PSF': 'AVG. PSF ($)',
-                'NNN_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'NNN_AVG_PSF': 'AVG. PSF ($)',
-                'MALL_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'MALL_AVG_PSF': 'AVG. PSF ($)',
-                'IND_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'IND_AVG_PSF': 'AVG. PSF ($)',
-                'SS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'SS_AVG_PSF': 'AVG. PSF ($)',
-                'CBD_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'CBD_AVG_PSF': 'AVG. PSF ($)',
-                'SUB_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'SUB_AVG_PSF': 'AVG. PSF ($)',
-                'FS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'FS_AVG_PSF': 'AVG. PSF ($)',
-                'LS_AVG_PRICE_MM': 'AVG. PRICE ($MM)',
-                'LS_AVG_PSF': 'AVG. PSF ($)',
-                },
 
 ## VALUATION METRICS ##
         if sector == 'MULTIFAMILY':
