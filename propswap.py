@@ -134,7 +134,7 @@ with st.form("PROPERTY PARAMETERS"):
         #     implied_ppu = st.markdown(round(min_prop_price * 1_000_000 / prop_size))
 
 
-    params_submit = st.form_submit_button("PROP/SWAP")
+params_submit = st.form_submit_button("PROP/SWAP")
 
     @st.cache(persist=True, allow_output_mutation=True)
     def filter_buyers(sector, prop_size, min_prop_price, prop_qual):
