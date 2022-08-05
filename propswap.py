@@ -256,6 +256,8 @@ with st.form("PROPERTY PARAMETERS"):
         YlOrRd = px.colors.sequential.YlOrRd
         Mint = px.colors.sequential.Mint
         Electric = px.colors.sequential.Electric
+        Sunsetdark = px.colors.sequential.Sunsetdark
+        Sunset = px.colors.sequential.Sunset
 
 
 
@@ -298,8 +300,8 @@ with st.form("PROPERTY PARAMETERS"):
                                     y=buyer_rec_df['MF_AVG_PPU'],
                                     # color=buyer_rec_df['INVESTOR_TYPE'],
                                     color=buyer_rec_df['MF_AVG_PPU'],
-                                    color_continuous_scale='YlOrRd', #'Tropic',
-                                    color_discrete_sequence=Electric,
+                                    color_continuous_scale=Sunsetdark, #'YlOrRd', #'Tropic',
+                                    color_discrete_sequence=Sunsetdark,
                                     hover_name=buyer_rec_df['INVESTOR'],
                                     hover_data=buyer_rec_df[['MSA']],
                                     title='TARGETED INVESTOR POOL',
@@ -314,7 +316,7 @@ with st.form("PROPERTY PARAMETERS"):
                                 y=buyer_rec_df['MF_AVG_PPU'],
                                 color=buyer_rec_df['INVESTOR_TYPE'],
                                 color_continuous_scale='YlOrRd', #'Tropic',
-                                color_discrete_sequence=Electric,
+                                color_discrete_sequence=Sunsetdark,
                                 category_orders={'INVESTOR_TYPE':'total descending'},
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
