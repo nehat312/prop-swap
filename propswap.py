@@ -87,7 +87,8 @@ st.subheader('*VIRTUAL CRE BROKER*')
 prop_params_header = st.header('INPUT PROPERTY PARAMETERS:')
 
 sector = st.selectbox('PROPERTY TYPE:',
-                      ("MULTIFAMILY", "STRIP CENTER", "NNN RETAIL", "MALL",
+                      ("MULTIFAMILY",
+                       "STRIP CENTER", "NNN RETAIL", "MALL",
                        "SELF-STORAGE", "INDUSTRIAL",
                        "FULL-SERVICE HOTEL", "LIMITED-SERVICE HOTEL",
                        "CBD OFFICE", "SUBURBAN OFFICE")
@@ -99,29 +100,30 @@ sector = st.selectbox('PROPERTY TYPE:',
 
 with st.form("PROPERTY PARAMETERS"):
     if sector == "MULTIFAMILY":
-        prop_size = st.selectbox('*TOTAL MF UNITS: [25-1,000 UNITS]', list(range(25,750,25)))
+        prop_size = st.number_input('*TOTAL MF UNITS: [25-1,000 UNITS]', list(range(25,750,25)))
     if sector == "FULL-SERVICE HOTEL":
-        prop_size = st.selectbox('*TOTAL FS KEYS: [25-1,000 KEYS]', list(range(25,750,25)))
+        prop_size = st.number_input('*TOTAL FS KEYS: [25-1,000 KEYS]', list(range(25,750,25)))
     if sector == "LIMITED-SERVICE HOTEL":
-        prop_size = st.selectbox('*TOTAL LS KEYS: [25-1,000 KEYS]', list(range(25,750,25)))
+        prop_size = st.number_input('*TOTAL LS KEYS: [25-1,000 KEYS]', list(range(25,750,25)))
     if sector == "STRIP CENTER":
-        prop_size = st.selectbox('*TOTAL SC SF: [5K-500K SF]', list(range(5000,505000,5000)))
+        prop_size = st.number_input('*TOTAL SC SF: [5K-500K SF]', list(range(5000,505000,5000)))
     if sector == "NNN RETAIL":
-        prop_size = st.selectbox('*TOTAL NNN SF: [5K-500K SF]', list(range(5000,505000,5000)))
+        prop_size = st.number_input('*TOTAL NNN SF: [5K-500K SF]', list(range(5000,505000,5000)))
     if sector == "MALL":
-        prop_size = st.selectbox('*TOTAL MALL SF: [50K-1MM SF]', list(range(50000,1010000,10000)))
+        prop_size = st.number_input('*TOTAL MALL SF: [50K-1MM SF]', list(range(50000,1010000,10000)))
     if sector == "SELF-STORAGE":
-        prop_size = st.selectbox('*TOTAL SELF-STORAGE SF: [5K-500K SF]', list(range(0,525000,25000)))
+        prop_size = st.number_input('*TOTAL SELF-STORAGE SF: [5K-500K SF]', list(range(0,525000,25000)))
     if sector == "INDUSTRIAL":
-        prop_size = st.selectbox('*TOTAL INDUSTRIAL SF: [5K-1MM SF]', list(range(5000,1005000,5000)))
+        prop_size = st.number_input('*TOTAL INDUSTRIAL SF: [5K-1MM SF]', list(range(5000,1005000,5000)))
     if sector == "CBD OFFICE":
-        prop_size = st.selectbox('*TOTAL CBD OFFICE SF: [10K-500K SF]', list(range(10000,505000,5000)))
+        prop_size = st.number_input('*TOTAL CBD OFFICE SF: [10K-500K SF]', list(range(10000,505000,5000)))
     if sector == "SUBURBAN OFFICE":
-        prop_size = st.selectbox('*TOTAL SUB OFFICE SF: [10K-500K SF]', list(range(10000,505000,5000)))
+        prop_size = st.number_input('*TOTAL SUB OFFICE SF: [10K-500K SF]', list(range(10000,505000,5000)))
 
+
+    min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]:', min_value = 0, max_value = 100, value=10, format='$')
     # min_prop_price = st.slider('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, step = 5)
-    min_prop_price = st.number_input('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, value=10)#, format='$.0f'
-    #min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
+    # min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
 
     prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
 
