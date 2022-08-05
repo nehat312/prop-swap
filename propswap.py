@@ -99,9 +99,7 @@ sector = st.selectbox('PROPERTY TYPE:',
 
 with st.form("PROPERTY PARAMETERS"):
     if sector == "MULTIFAMILY":
-        prop_size = st.slider('*TOTAL MF UNITS: [25-1,000 UNITS]', min_value=0, max_value=1000, step=25)
-        # prop_size = st.number_input('*TOTAL MF UNITS: [25-1,000 UNITS]', min_value=0, max_value=1000, step=25)
-        #prop_size = st.selectbox('*TOTAL MF UNITS: [25-1,000 UNITS]', list(range(25,750,25)))
+        prop_size = st.selectbox('*TOTAL MF UNITS: [25-1,000 UNITS]', list(range(25,750,25)))
     if sector == "FULL-SERVICE HOTEL":
         prop_size = st.selectbox('*TOTAL FS KEYS: [25-1,000 KEYS]', list(range(25,750,25)))
     if sector == "LIMITED-SERVICE HOTEL":
@@ -121,12 +119,9 @@ with st.form("PROPERTY PARAMETERS"):
     if sector == "SUBURBAN OFFICE":
         prop_size = st.selectbox('*TOTAL SUB OFFICE SF: [10K-500K SF]', list(range(10000,505000,5000)))
 
-
     # min_prop_price = st.slider('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, step = 5)
-    min_prop_price = st.number_input('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, value=10, format='$.0f')
+    min_prop_price = st.number_input('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, value=10)#, format='$.0f'
     #min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
-
-
 
     prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
 
