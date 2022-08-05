@@ -107,11 +107,11 @@ with st.form("PROPERTY PARAMETERS"):
     if sector == "LIMITED-SERVICE HOTEL":
         prop_size = st.selectbox('*TOTAL LS KEYS: [25-1,000 KEYS]', list(range(25,750,25)))
     if sector == "STRIP CENTER":
-        prop_size = st.selectbox('*TOTAL SC SF: [5K-1MM SF]', list(range(5000,1005000,5000)))
+        prop_size = st.selectbox('*TOTAL SC SF: [5K-500K SF]', list(range(5000,505000,5000)))
     if sector == "NNN RETAIL":
-        prop_size = st.selectbox('*TOTAL NNN SF: [5K-500k SF]', list(range(5000,505000,5000)))
+        prop_size = st.selectbox('*TOTAL NNN SF: [5K-500K SF]', list(range(5000,505000,5000)))
     if sector == "MALL":
-        prop_size = st.selectbox('*TOTAL MALL SF: [10K-1MM SF]', list(range(10000,1010000,10000)))
+        prop_size = st.selectbox('*TOTAL MALL SF: [50K-1MM SF]', list(range(50000,1010000,10000)))
     if sector == "SELF-STORAGE":
         prop_size = st.selectbox('*TOTAL SELF-STORAGE SF: [5K-500K SF]', list(range(0,525000,25000)))
     if sector == "INDUSTRIAL":
@@ -121,10 +121,11 @@ with st.form("PROPERTY PARAMETERS"):
     if sector == "SUBURBAN OFFICE":
         prop_size = st.selectbox('*TOTAL SUB OFFICE SF: [10K-500K SF]', list(range(10000,505000,5000)))
 
-#streamlit. slider ( label , min_value=None , max_value=None , value=None , step=None , format=None , key=None )
 
-    min_prop_price = st.slider('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, step = 5)
-        #min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
+    # min_prop_price = st.slider('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, step = 5)
+    min_prop_price = st.number_input('*MINIMUM SALE PRICE [$0MM-$100MM]:', min_value = 0, max_value = 100, value=10, format='$.0f')
+    #min_prop_price = st.selectbox('*MINIMUM PRICE [$0MM-$100MM]:', (list(range(0,105,5))))
+
 
 
     prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
@@ -225,6 +226,7 @@ with st.form("PROPERTY PARAMETERS"):
           sub_buyer_recs = sub_qual_filter.sort_values(by = 'SUB_VOL_RANK', ascending = True)[:50]
           sub_buyer_recs = pd.DataFrame(data = sub_buyer_recs, columns = sub_cols)
         return sub_buyer_recs
+
 
 ## TARGET INVESTOR DATAFRAME ##
     if params_submit:
@@ -427,9 +429,9 @@ left_button = left_column.button('GITHUB')
 right_button = right_column.button('INVESTOR UNIVERSE')
 if left_button:
     left_column.write('https://github.com/nehat312/prop-swap')
-    # left_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 if right_button:
     right_column.write('')
+    # left_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
 
 # st.success('THANKS FOR PROP/SWAPPING')
@@ -511,3 +513,4 @@ st.stop()
 #    time.sleep(5)
 #    st.success('LIVE')
 
+#streamlit. slider ( label , min_value=None , max_value=None , value=None , step=None , format=None , key=None )
