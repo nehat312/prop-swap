@@ -58,12 +58,6 @@ ls_cols = ['INVESTOR', 'INVESTOR_TYPE', 'LS_AVG_PRICE_MM', 'LS_KEYS_PROP', 'LS_A
 cbd_cols = ['INVESTOR', 'INVESTOR_TYPE', 'CBD_AVG_PRICE_MM', 'CBD_SF_PROP', 'CBD_AVG_PSF',  'CBD_QUALITY', 'CBD_VOL_RANK', 'CITY', 'STATE', 'COUNTRY', 'MSA', 'WEBSITE', ]
 sub_cols = ['INVESTOR', 'INVESTOR_TYPE', 'SUB_AVG_PRICE_MM', 'SUB_SF_PROP', 'SUB_AVG_PSF',  'SUB_QUALITY', 'SUB_VOL_RANK', 'CITY', 'STATE', 'COUNTRY', 'MSA', 'WEBSITE', ]
 
-## NUMERICAL CONVERSION ##
-
-# mf_num_cols = ['MF_AVG_PRICE_MM', 'MF_UNITS_PROP', 'MF_AVG_PPU',  'AVG_QUALITY', 'MF_QUALITY', 'TTL_VOL_RANK', 'TTL_SF_RANK', 'MF_VOL_RANK',]
-
-# for i in mf_num_cols:
-#     pd.to_numeric(all_investor_idx[i])
 
 # #%%
 
@@ -274,7 +268,8 @@ with st.form("PROPERTY PARAMETERS"):
                                     color_continuous_scale='Tropic',
                                     hover_name=buyer_rec_df['INVESTOR'],
                                     hover_data=buyer_rec_df[['MSA']],
-                                    labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PRICE/UNIT ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                    title='TARGETED INVESTOR POOL',
+                                    labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     )
 
             st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
@@ -287,8 +282,9 @@ with st.form("PROPERTY PARAMETERS"):
                                 color_continuous_scale='Tropic',
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
-                                labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PRICE/UNIT ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                labels={'MF_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'MF_AVG_PPU': 'AVG. PPU ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
+                                # size=buyer_rec_df['SC_VOL_RANK'],
                                 # height=400, # width=400,
                                 )
 
@@ -310,9 +306,8 @@ with st.form("PROPERTY PARAMETERS"):
                                     color_continuous_scale='Tropic',
                                     hover_name=buyer_rec_df['INVESTOR'],
                                     hover_data=buyer_rec_df[['MSA']],
-                                    title='TARGETED VALUATION RANGE',
-                                    labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PRICE/SF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
-                                    # size=buyer_rec_df['SC_VOL_RANK'],
+                                    title='TARGETED INVESTOR POOL',
+                                    labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                     )
 
             # st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
@@ -325,17 +320,15 @@ with st.form("PROPERTY PARAMETERS"):
                                 color_continuous_scale='Tropic',
                                 hover_name=buyer_rec_df['INVESTOR'],
                                 hover_data=buyer_rec_df[['MSA']],
-                                title='TARGETED VALUATION RANGE',
-                                labels={'INVESTOR': 'INVESTOR', 'SC_AVG_PSF': 'AVG. PRICE/SF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
+                                title='EST. VALUATION RANGE ($ PSF)',
+                                labels={'SC_AVG_PRICE_MM': 'AVG. PRICE ($MM)', 'SC_AVG_PSF': 'AVG. PSF ($)', 'INVESTOR_TYPE': 'INVESTOR TYPE'},
                                 barmode='group',
                                 )
 
 
-            st.write('TARGETED INVESTOR POOL --- ESTIMATED VALUATION RANGE')
             st.plotly_chart(sc_chart_2, use_container_width=False, sharing="streamlit")
 
-                # barmode = "group"
-                #pattern_shape = "nation", pattern_shape_sequence = [".", "x", "+"]
+            #pattern_shape = "nation", pattern_shape_sequence = [".", "x", "+"]
 
             # fig = px.bar(df, x="sex", y="total_bill", color="smoker", barmode="group", facet_row="time", facet_col="day",
             #        category_orders={"day": ["Thur", "Fri", "Sat", "Sun"], "time": ["Lunch", "Dinner"]})
@@ -447,7 +440,18 @@ st.stop()
 
 
 
+
+### SCRATCH NOTES
+
 ### TRANSLATE QUALITY SCALE TO CAP RATE ###
+
+
+## NUMERICAL CONVERSION ##
+
+# mf_num_cols = ['MF_AVG_PRICE_MM', 'MF_UNITS_PROP', 'MF_AVG_PPU',  'AVG_QUALITY', 'MF_QUALITY', 'TTL_VOL_RANK', 'TTL_SF_RANK', 'MF_VOL_RANK',]
+
+# for i in mf_num_cols:
+#     pd.to_numeric(all_investor_idx[i])
 
 
 # CONFIG TEMPLATE
