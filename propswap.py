@@ -455,6 +455,7 @@ def main():
 if __name__ == "__main__":
     main()
 
+## IMAGE @@
 test_img = Image.open('ROTATE.jpg')
 st.image(test_img)
 
