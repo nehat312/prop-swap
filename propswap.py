@@ -92,9 +92,6 @@ sector = st.selectbox('PROPERTY TYPE:',
                        "CBD OFFICE", "SUBURBAN OFFICE")
                       )
 
-test_img = Image.open('untitled.jpg')
-st.write(img)
-
 # st.sidebar.xyz
 
 with st.form("PROPERTY PARAMETERS"):
@@ -469,6 +466,9 @@ if left_button:
 if right_button:
     right_column.write('')
     # left_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
+
+test_img = Image.open('https://github.com/nehat312/prop-swap/blob/main/images/ROTATE.jpg')
+st.write(test_img)
 
 
 # st.success('THANKS FOR PROP/SWAPPING')
