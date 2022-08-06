@@ -455,20 +455,21 @@ def main():
 if __name__ == "__main__":
     main()
 
+test_img = Image.open('ROTATE.jpg')
+st.image(test_img)
 
 ## EXTERNAL LINKS ##
 
 left_column, right_column = st.columns(2)
-left_button = left_column.button('GITHUB')
-right_button = right_column.button('INVESTOR UNIVERSE')
+left_button = left_column.button('GITHUB REPOSITORY')
+right_button = right_column.button('CONTACT INFORMATION')
 if left_button:
     left_column.write('https://github.com/nehat312/prop-swap')
 if right_button:
     right_column.write('')
     # left_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
-test_img = Image.open('ROTATE.jpg')
-st.image(test_img)
+
 
 
 # st.success('THANKS FOR PROP/SWAPPING')
