@@ -468,7 +468,7 @@ if right_button:
     # left_column.write('https://public.tableau.com/shared/S4GKR7QYB?:display_count=n&:origin=viz_share_link')
 
 test_img = Image.open('ROTATE.jpg')
-st.write(test_img)
+st.image(test_img)
 
 
 # st.success('THANKS FOR PROP/SWAPPING')
