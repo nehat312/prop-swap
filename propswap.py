@@ -31,10 +31,8 @@ from PIL import Image
 
 ## VISUAL SETTINGS ##
 
-pd.options.display.float_format = '${:,.2f}'.format
+# pd.options.display.float_format = '${:,.2f}'.format
 # pd.set_option('display.max_colwidth', 200)
-# fig = px.colors.qualitative.swatches()
-# fig.show()
 
 
 ## DATA IMPORTS ##
@@ -94,7 +92,8 @@ sector = st.selectbox('PROPERTY TYPE:',
                        "CBD OFFICE", "SUBURBAN OFFICE")
                       )
 
-# img = Image.open('untitled.jpg')
+test_img = Image.open('untitled.jpg')
+st.write(img)
 
 # st.sidebar.xyz
 
@@ -128,15 +127,15 @@ with st.form("PROPERTY PARAMETERS"):
         min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
     if sector == "INDUSTRIAL":
-        prop_size = st.number_input('*TOTAL INDUSTRIAL SF [5K-1MM SF]', min_value=10000, max_value=500000, step=5000, value=10000) #list(range(5000,1005000,5000)))
+        prop_size = st.number_input('*TOTAL INDUSTRIAL SF [5K-1MM SF]', min_value=10000, max_value=500000, step=5000, value=100000) #list(range(5000,1005000,5000)))
         min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
     if sector == "CBD OFFICE":
-        prop_size = st.number_input('*TOTAL CBD OFFICE SF [10K-500K SF]', min_value=10000, max_value=500000, step=5000, value=10000) #list(range(10000,505000,5000)))
+        prop_size = st.number_input('*TOTAL CBD OFFICE SF [10K-500K SF]', min_value=10000, max_value=500000, step=5000, value=100000) #list(range(10000,505000,5000)))
         min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
     if sector == "SUBURBAN OFFICE":
-        prop_size = st.number_input('*TOTAL SUB OFFICE SF: [10K-500K SF]', min_value=10000, max_value=500000, step=5000, value=10000) # list(range(10000,505000,5000)))
+        prop_size = st.number_input('*TOTAL SUB OFFICE SF: [10K-500K SF]', min_value=10000, max_value=500000, step=5000, value=100000) # list(range(10000,505000,5000)))
         min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1,6,1)))
 
