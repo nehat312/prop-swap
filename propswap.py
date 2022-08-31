@@ -260,69 +260,65 @@ with tab_0:
 with tab_1:
     with st.form('MULTIFAMILY PROPERTY PARAMETERS'):
         multifamily_header = st.subheader('MULTIFAMILY')
-        mf_prop_size = st.number_input('*TOTAL MF UNITS [25-1,000 UNITS]',
-                                    min_value=25, max_value=500, step=25, value=100)  # list(range(25,750,25)))
-        mf_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]',
-                                         min_value=0, max_value=100, value=10, step=5)
-        mf_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:',
-                                 list(range(1, 6, 1)))
+        mf_prop_size = st.number_input('*TOTAL MF UNITS [25-1,000 UNITS]', min_value=25, max_value=500, step=25, value=100)  # list(range(25,750,25)))
+        mf_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='MF', min_value=0, max_value=100, value=10, step=5)
+        mf_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
         mf_params_submit = st.form_submit_button("MF PROP/SWAP")
 
 with tab_2:
     strip_center_header = st.subheader('STRIP CENTER')
     sc_prop_size = st.number_input('*TOTAL SC SF [5K-500K SF]', min_value=5000, max_value=500000, step=5000,
                                 value=50000)  # list(range(5000,505000,5000)))
-    sc_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+    sc_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='SC', min_value=0, max_value=100, value=10, step=5)
     sc_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
-
 
 with tab_3:
     nnn_header = st.subheader('NNN')
     nnn_prop_size = st.number_input('*TOTAL NNN SF [5K-500K SF]', min_value=5000, max_value=500000, step=5000, value=50000)  # list(range(5000,505000,5000)))
-    nnn_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+    nnn_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='NNN', min_value=0, max_value=100, value=10, step=5)
     nnn_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
 
 with tab_4:
     mall_header = st.subheader('MALL')
     mall_prop_size = st.number_input('*TOTAL MALL SF [50K-1MM SF]', min_value=50000, max_value=500000, step=5000, value=250000)  # list(range(50000,1010000,10000)))
-    mall_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+    mall_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='MALL', min_value=0, max_value=100, value=10, step=5)
     mall_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
 
 with tab_5:
     industrial_header = st.subheader('INDUSTRIAL')
     ind_prop_size = st.number_input('*TOTAL INDUSTRIAL SF [5K-1MM SF]', min_value=10000, max_value=500000, step=5000, value=100000)  # list(range(5000,1005000,5000)))
-    ind_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+    ind_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='IND', min_value=0, max_value=100, value=10, step=5)
     ind_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
 
 with tab_6:
     self_storage_header = st.subheader('SELF-STORAGE')
     ss_prop_size = st.number_input('*TOTAL SELF-STORAGE SF [5K-500K SF]', min_value=0, max_value=500000, step=2500, value=100)  # list(range(0,525000,25000)))
-    ss_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+    ss_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='SS', min_value=0, max_value=100, value=10, step=5)
     ss_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
 
 with tab_7:
     cbd_office_header = st.subheader('CBD OFFICE')
     cbd_prop_size = st.number_input('*TOTAL CBD OFFICE SF [10K-500K SF]', min_value=10000, max_value=500000, step=5000,
                                 value=100000)  # list(range(10000,505000,5000)))
-    cbd_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+    cbd_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='CBD', min_value=0, max_value=100, value=10, step=5)
     cbd_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
 
 with tab_8:
     sub_office_header = st.subheader('SUBURBAN OFFICE')
     sub_prop_size = st.number_input('*TOTAL SUB OFFICE SF: [10K-500K SF]', min_value=10000, max_value=500000, step=5000, value=100000)  # list(range(10000,505000,5000)))
-    sub_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+    sub_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='SUB', min_value=0, max_value=100, value=10, step=5)
     sub_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
 
 with tab_9:
     fs_hotel_header = st.subheader('FULL-SERVICE HOTEL')
     fs_prop_size = st.number_input('*TOTAL FS KEYS [25-1,000 KEYS]', min_value=25, max_value=750, step=25, value=100)  # list(range(25,750,25)))
-    fs_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10,                                     step=5)
+    fs_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='FS', min_value=0, max_value=100, value=10,                                     step=5)
     fs_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
 
 with tab_10:
     Ls_hotel_header = st.subheader('LIMITED-SERVICE HOTEL')
     Ls_prop_size = st.number_input('*TOTAL LS KEYS [25-1,000 KEYS]', min_value=25, max_value=750, step=25, value=100)  # list(range(25,750,25)))
-    Ls_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', min_value=0, max_value=100, value=10, step=5)
+    Ls_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='LS', min_value=0, max_value=100, value=10, step=5)
     Ls_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
 
 
