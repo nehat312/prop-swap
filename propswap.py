@@ -463,9 +463,18 @@ with tab_10:
         return sub_buyer_recs
 
 
+### *****
+### *****
+
 ## TARGET INVESTOR DATAFRAME ##
-    if params_submit:
-        buyer_rec_df = filter_buyers(sector, prop_size, min_prop_price, prop_qual)
+
+### *****
+### *****
+    # if mf_params_submit:
+    #     buyer_rec_df = filter_buyers(sector, prop_size, min_prop_price, prop_qual)
+
+
+
 
         # st.write("TARGETED INVESTOR POOL:")
         # st.dataframe(buyer_rec_df)
