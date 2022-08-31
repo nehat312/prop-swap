@@ -262,7 +262,7 @@ with tab_1:
         multifamily_header = st.subheader('MULTIFAMILY')
         mf_prop_size = st.number_input('*TOTAL MF UNITS [25-1,000 UNITS]', min_value=25, max_value=500, step=25, value=100)  # list(range(25,750,25)))
         mf_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='MF', min_value=0, max_value=100, value=10, step=5)
-        mf_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
+        # mf_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
         mf_params_submit = st.form_submit_button("MF PROP/SWAP")
 
 with tab_2:
