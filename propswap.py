@@ -266,7 +266,7 @@ with tab_1:
                                          min_value=0, max_value=100, value=10, step=5)
         prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:',
                                  list(range(1, 6, 1)))
-    mf_params_submit = st.form_submit_button("MF PROP/SWAP")
+        mf_params_submit = st.form_submit_button("MF PROP/SWAP")
 
 with tab_2:
     strip_center_header = st.subheader('STRIP CENTER')
