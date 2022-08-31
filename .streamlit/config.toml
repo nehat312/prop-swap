@@ -5,7 +5,7 @@ primaryColor="#09ff00"
 backgroundColor="#152238" #"#1B1E1F"
 secondaryBackgroundColor="#020202"
 textColor="#09ff00"
-font="monospace"
+font="sans serif"#"monospace"
 
 ## MIAMI VICE ##
 # primaryColor="#07efdb"
