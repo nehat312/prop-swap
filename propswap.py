@@ -70,6 +70,19 @@ sub_cols = ['INVESTOR', 'INVESTOR_TYPE', 'SUB_AVG_PRICE_MM', 'SUB_SF_PROP', 'SUB
 
 
 #%%
+# all_reits_trading = yf.download(tickers = reit_tickers,
+#         period = "max", # valid periods: 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max
+#         interval = "1d", # valid intervals: 1m,2m,5m,15m,30m,60m,90m,1h,1d,5d,1wk,1mo,3mo
+#         start = start_date, #'2000-01-01'
+#         end = today,
+#         group_by = 'column',
+#         auto_adjust = True,
+#         prepost = False,
+#         threads = True,
+#         proxy = None, #"PROXY_SERVER"
+#         timeout=12)
+
+#%%
 ##################
 # FORMAT / STYLE #
 ##################
@@ -232,7 +245,6 @@ link_col_1, link_col_2, link_col_3 = st.columns(3)
 ext_link_1 = link_col_1.markdown(github_link, unsafe_allow_html=True)
 ext_link_2 = link_col_2.markdown(reit_comps_link, unsafe_allow_html=True)
 ext_link_3 = link_col_3.markdown(tbu_link, unsafe_allow_html=True)
-
 
 ## INTRODUCTION ##
 st.container()
