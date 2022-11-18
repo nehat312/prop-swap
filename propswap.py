@@ -267,7 +267,8 @@ tab_0, tab_1, tab_2, tab_3, tab_4, tab_5, tab_6, tab_7, tab_8, tab_9, tab_10 = s
 #                       )
 
 with tab_0:
-    all_sectors_header = st.subheader('COMMERCIAL REAL ESTATE - ECONOMIC INDICATORS')
+    all_sectors_header = st.subheader('COMMERCIAL REAL ESTATE INVESTOR UNIVERSE')
+    # ECONOMIC INDICATORS
 
 with tab_1:
     with st.form('MULTIFAMILY PROPERTY PARAMETERS'):
