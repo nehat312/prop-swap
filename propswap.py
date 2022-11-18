@@ -266,6 +266,99 @@ tab_0, tab_1, tab_2, tab_3, tab_4, tab_5, tab_6, tab_7, tab_8, tab_9, tab_10 = s
 #                        "CBD OFFICE", "SUBURBAN OFFICE")
 #                       )
 
+@st.cache(persist=True, allow_output_mutation=True)
+def filter_buyers(sector, prop_size, min_prop_price, prop_qual):
+    if sector == 'MULTIFAMILY':
+        for investors in all_investor_idx:
+            mf_size_filter = all_investor_idx[all_investor_idx.MF_UNITS_PROP >= prop_size]
+            mf_min_price_filter = mf_size_filter[mf_size_filter.MF_AVG_PRICE_MM >= min_prop_price]
+            mf_qual_filter = mf_min_price_filter[(mf_min_price_filter.MF_QUALITY >= (prop_qual - 1)) & (
+                        mf_min_price_filter.MF_QUALITY <= (prop_qual + 1))]
+            mf_buyer_recs = mf_qual_filter.sort_values(by='MF_VOL_RANK', ascending=True)[:50]
+            mf_buyer_recs = pd.DataFrame(data=mf_buyer_recs, columns=mf_cols)
+        return mf_buyer_recs
+    elif sector == 'STRIP CENTER':
+        for investors in all_investor_idx:
+            sc_size_filter = all_investor_idx[all_investor_idx['SC_SF_PROP'] >= prop_size]
+            sc_min_price_filter = sc_size_filter[sc_size_filter['SC_AVG_PRICE_MM'] >= min_prop_price]
+            sc_qual_filter = sc_min_price_filter[(sc_min_price_filter['SC_QUALITY'] >= (prop_qual - 1)) & (
+                        sc_min_price_filter['SC_QUALITY'] <= (prop_qual + 1))]
+            sc_buyer_recs = sc_qual_filter.sort_values(by='SC_VOL_RANK', ascending=True)[:50]
+            sc_buyer_recs = pd.DataFrame(data=sc_buyer_recs, columns=sc_cols)
+        return sc_buyer_recs
+    elif sector == 'NNN RETAIL':
+        for investors in all_investor_idx:
+            nnn_size_filter = all_investor_idx[all_investor_idx['NNN_SF_PROP'] >= prop_size]
+            nnn_min_price_filter = nnn_size_filter[nnn_size_filter['NNN_AVG_PRICE_MM'] >= min_prop_price]
+            nnn_qual_filter = nnn_min_price_filter[(nnn_min_price_filter['NNN_QUALITY'] >= (prop_qual - 1)) & (
+                        nnn_min_price_filter['NNN_QUALITY'] <= (prop_qual + 1))]
+            nnn_buyer_recs = nnn_qual_filter.sort_values(by='NNN_VOL_RANK', ascending=True)[:50]
+            nnn_buyer_recs = pd.DataFrame(data=nnn_buyer_recs, columns=nnn_cols)
+        return nnn_buyer_recs
+    elif sector == 'MALL':
+        for investors in all_investor_idx:
+            mall_size_filter = all_investor_idx[all_investor_idx['MALL_SF_PROP'] >= prop_size]
+            mall_min_price_filter = mall_size_filter[mall_size_filter['MALL_AVG_PRICE_MM'] >= min_prop_price]
+            mall_qual_filter = mall_min_price_filter[(mall_min_price_filter['MALL_QUALITY'] >= (prop_qual - 2)) & (
+                        mall_min_price_filter['MALL_QUALITY'] <= (prop_qual + 2))]
+            mall_buyer_recs = mall_qual_filter.sort_values(by='MALL_VOL_RANK', ascending=False)[:10]
+            mall_buyer_recs = pd.DataFrame(data=mall_buyer_recs, columns=mall_cols)
+        return mall_buyer_recs
+    elif sector == 'SELF-STORAGE':
+        for investors in all_investor_idx:
+            ss_size_filter = all_investor_idx[all_investor_idx['SS_SF_PROP'] >= prop_size]
+            ss_min_price_filter = ss_size_filter[ss_size_filter['SS_AVG_PRICE_MM'] >= min_prop_price]
+            ss_qual_filter = ss_min_price_filter[(ss_min_price_filter['SS_QUALITY'] >= (prop_qual - 1)) & (
+                        ss_min_price_filter['SS_QUALITY'] <= (prop_qual + 1))]
+            ss_buyer_recs = ss_qual_filter.sort_values(by='SS_VOL_RANK', ascending=True)[:50]
+            ss_buyer_recs = pd.DataFrame(data=ss_buyer_recs, columns=ss_cols)
+        return ss_buyer_recs
+    elif sector == 'INDUSTRIAL':
+        for investors in all_investor_idx:
+            ind_size_filter = all_investor_idx[all_investor_idx['IND_SF_PROP'] >= prop_size]
+            ind_min_price_filter = ind_size_filter[ind_size_filter['IND_AVG_PRICE_MM'] >= min_prop_price]
+            ind_qual_filter = ind_min_price_filter[(ind_min_price_filter['IND_QUALITY'] >= (prop_qual - 1)) & (
+                        ind_min_price_filter['IND_QUALITY'] <= (prop_qual + 1))]
+            ind_buyer_recs = ind_qual_filter.sort_values(by='IND_VOL_RANK', ascending=True)[:50]
+            ind_buyer_recs = pd.DataFrame(data=ind_buyer_recs, columns=ind_cols)
+        return ind_buyer_recs
+    elif sector == 'FULL-SERVICE HOTEL':
+        for investors in all_investor_idx:
+            fs_size_filter = all_investor_idx[all_investor_idx['FS_KEYS_PROP'] >= prop_size]
+            fs_min_price_filter = fs_size_filter[fs_size_filter['FS_AVG_PRICE_MM'] >= min_prop_price]
+            fs_qual_filter = fs_min_price_filter[(fs_min_price_filter['FS_QUALITY'] >= (prop_qual - 1)) & (
+                        fs_min_price_filter['FS_QUALITY'] <= (prop_qual + 1))]
+            fs_buyer_recs = fs_qual_filter.sort_values(by='FS_VOL_RANK', ascending=True)[:50]
+            fs_buyer_recs = pd.DataFrame(data=fs_buyer_recs, columns=fs_cols)
+        return fs_buyer_recs
+    elif sector == 'LIMITED-SERVICE HOTEL':
+        for investors in all_investor_idx:
+            ls_size_filter = all_investor_idx[all_investor_idx['LS_KEYS_PROP'] >= prop_size]
+            ls_min_price_filter = ls_size_filter[ls_size_filter['LS_AVG_PRICE_MM'] >= min_prop_price]
+            ls_qual_filter = ls_min_price_filter[(ls_min_price_filter['LS_QUALITY'] >= (prop_qual - 1)) & (
+                        ls_min_price_filter['LS_QUALITY'] <= (prop_qual + 1))]
+            ls_buyer_recs = ls_qual_filter.sort_values(by='LS_VOL_RANK', ascending=True)[:50]
+            ls_buyer_recs = pd.DataFrame(data=ls_buyer_recs, columns=ls_cols)
+        return ls_buyer_recs
+    elif sector == 'CBD OFFICE':
+        for investors in all_investor_idx:
+            cbd_size_filter = all_investor_idx[all_investor_idx['CBD_SF_PROP'] >= prop_size]
+            cbd_min_price_filter = cbd_size_filter[cbd_size_filter['CBD_AVG_PRICE_MM'] >= min_prop_price]
+            cbd_qual_filter = cbd_min_price_filter[(cbd_min_price_filter['CBD_QUALITY'] >= (prop_qual - 1)) & (
+                        cbd_min_price_filter['CBD_QUALITY'] <= (prop_qual + 1))]
+            cbd_buyer_recs = cbd_qual_filter.sort_values(by='CBD_VOL_RANK', ascending=True)[:50]
+            cbd_buyer_recs = pd.DataFrame(data=cbd_buyer_recs, columns=cbd_cols)
+        return cbd_buyer_recs
+    elif sector == 'SUB OFFICE':
+        for investors in all_investor_idx:
+            sub_size_filter = all_investor_idx[all_investor_idx['SUB_SF_PROP'] >= prop_size]
+            sub_min_price_filter = sub_size_filter[sub_size_filter['SUB_AVG_PRICE_MM'] >= min_prop_price]
+            sub_qual_filter = sub_min_price_filter[(sub_min_price_filter['SUB_QUALITY'] >= (prop_qual - 1)) & (
+                        sub_min_price_filter['SUB_QUALITY'] <= (prop_qual + 1))]
+            sub_buyer_recs = sub_qual_filter.sort_values(by='SUB_VOL_RANK', ascending=True)[:50]
+            sub_buyer_recs = pd.DataFrame(data=sub_buyer_recs, columns=sub_cols)
+        return sub_buyer_recs
+
 with tab_0:
     all_sectors_header = st.subheader('COMMERCIAL REAL ESTATE INVESTOR UNIVERSE')
     # ECONOMIC INDICATORS
@@ -276,7 +369,7 @@ with tab_1:
         mf_prop_size = st.number_input('*TOTAL MF UNITS [25-1,000 UNITS]', min_value=25, max_value=500, step=25, value=100)  # list(range(25,750,25)))
         mf_min_prop_price = st.number_input('*MINIMUM VALUATION [$0MM-$100MM]', key='MF', min_value=0, max_value=100, value=10, step=5)
         # mf_prop_qual = st.selectbox('*PROPERTY QUALITY [1-5]:', list(range(1, 6, 1)))
-        mf_params_submit = st.form_submit_button("MF PROP/SWAP")
+        mf_params_submit = st.form_submit_button("PROP/SWAP")
 
 with tab_2:
     strip_center_header = st.subheader('STRIP CENTER')
@@ -392,88 +485,7 @@ with tab_10:
 
     # params_submit = st.form_submit_button("PROP/SWAP")
 
-    @st.cache(persist=True, allow_output_mutation=True)
-    def filter_buyers(sector, prop_size, min_prop_price, prop_qual):
-      if sector == 'MULTIFAMILY':
-        for investors in all_investor_idx:
-          mf_size_filter = all_investor_idx[all_investor_idx.MF_UNITS_PROP >= prop_size]
-          mf_min_price_filter = mf_size_filter[mf_size_filter.MF_AVG_PRICE_MM >= min_prop_price]
-          mf_qual_filter = mf_min_price_filter[(mf_min_price_filter.MF_QUALITY >= (prop_qual-1)) & (mf_min_price_filter.MF_QUALITY <= (prop_qual+1))]
-          mf_buyer_recs = mf_qual_filter.sort_values(by = 'MF_VOL_RANK', ascending = True)[:50]
-          mf_buyer_recs = pd.DataFrame(data = mf_buyer_recs, columns = mf_cols)
-        return mf_buyer_recs
-      elif sector == 'STRIP CENTER':
-        for investors in all_investor_idx:
-          sc_size_filter = all_investor_idx[all_investor_idx['SC_SF_PROP'] >= prop_size]
-          sc_min_price_filter = sc_size_filter[sc_size_filter['SC_AVG_PRICE_MM'] >= min_prop_price]
-          sc_qual_filter = sc_min_price_filter[(sc_min_price_filter['SC_QUALITY'] >= (prop_qual-1)) & (sc_min_price_filter['SC_QUALITY'] <= (prop_qual+1))]
-          sc_buyer_recs = sc_qual_filter.sort_values(by = 'SC_VOL_RANK', ascending = True)[:50]
-          sc_buyer_recs = pd.DataFrame(data = sc_buyer_recs, columns = sc_cols)
-        return sc_buyer_recs
-      elif sector == 'NNN RETAIL':
-        for investors in all_investor_idx:
-          nnn_size_filter = all_investor_idx[all_investor_idx['NNN_SF_PROP'] >= prop_size]
-          nnn_min_price_filter = nnn_size_filter[nnn_size_filter['NNN_AVG_PRICE_MM'] >= min_prop_price]
-          nnn_qual_filter = nnn_min_price_filter[(nnn_min_price_filter['NNN_QUALITY'] >= (prop_qual-1)) & (nnn_min_price_filter['NNN_QUALITY'] <= (prop_qual+1))]
-          nnn_buyer_recs = nnn_qual_filter.sort_values(by = 'NNN_VOL_RANK', ascending = True)[:50]
-          nnn_buyer_recs = pd.DataFrame(data = nnn_buyer_recs, columns = nnn_cols)
-        return nnn_buyer_recs
-      elif sector == 'MALL':
-        for investors in all_investor_idx:
-          mall_size_filter = all_investor_idx[all_investor_idx['MALL_SF_PROP'] >= prop_size]
-          mall_min_price_filter = mall_size_filter[mall_size_filter['MALL_AVG_PRICE_MM'] >= min_prop_price]
-          mall_qual_filter = mall_min_price_filter[(mall_min_price_filter['MALL_QUALITY'] >= (prop_qual-2)) & (mall_min_price_filter['MALL_QUALITY'] <= (prop_qual+2))]
-          mall_buyer_recs = mall_qual_filter.sort_values(by = 'MALL_VOL_RANK', ascending = False)[:10]
-          mall_buyer_recs = pd.DataFrame(data = mall_buyer_recs, columns = mall_cols)
-        return mall_buyer_recs
-      elif sector == 'SELF-STORAGE':
-        for investors in all_investor_idx:
-          ss_size_filter = all_investor_idx[all_investor_idx['SS_SF_PROP'] >= prop_size]
-          ss_min_price_filter = ss_size_filter[ss_size_filter['SS_AVG_PRICE_MM'] >= min_prop_price]
-          ss_qual_filter = ss_min_price_filter[(ss_min_price_filter['SS_QUALITY'] >= (prop_qual-1)) & (ss_min_price_filter['SS_QUALITY'] <= (prop_qual+1))]
-          ss_buyer_recs = ss_qual_filter.sort_values(by = 'SS_VOL_RANK', ascending = True)[:50]
-          ss_buyer_recs = pd.DataFrame(data = ss_buyer_recs, columns = ss_cols)
-        return ss_buyer_recs
-      elif sector == 'INDUSTRIAL':
-        for investors in all_investor_idx:
-          ind_size_filter = all_investor_idx[all_investor_idx['IND_SF_PROP'] >= prop_size]
-          ind_min_price_filter = ind_size_filter[ind_size_filter['IND_AVG_PRICE_MM'] >= min_prop_price]
-          ind_qual_filter = ind_min_price_filter[(ind_min_price_filter['IND_QUALITY'] >= (prop_qual-1)) & (ind_min_price_filter['IND_QUALITY'] <= (prop_qual+1))]
-          ind_buyer_recs = ind_qual_filter.sort_values(by = 'IND_VOL_RANK', ascending = True)[:50]
-          ind_buyer_recs = pd.DataFrame(data = ind_buyer_recs, columns = ind_cols)
-        return ind_buyer_recs
-      elif sector == 'FULL-SERVICE HOTEL':
-        for investors in all_investor_idx:
-          fs_size_filter = all_investor_idx[all_investor_idx['FS_KEYS_PROP'] >= prop_size]
-          fs_min_price_filter = fs_size_filter[fs_size_filter['FS_AVG_PRICE_MM'] >= min_prop_price]
-          fs_qual_filter = fs_min_price_filter[(fs_min_price_filter['FS_QUALITY'] >= (prop_qual-1)) & (fs_min_price_filter['FS_QUALITY'] <= (prop_qual+1))]
-          fs_buyer_recs = fs_qual_filter.sort_values(by = 'FS_VOL_RANK', ascending = True)[:50]
-          fs_buyer_recs = pd.DataFrame(data = fs_buyer_recs, columns = fs_cols)
-        return fs_buyer_recs
-      elif sector == 'LIMITED-SERVICE HOTEL':
-        for investors in all_investor_idx:
-          ls_size_filter = all_investor_idx[all_investor_idx['LS_KEYS_PROP'] >= prop_size]
-          ls_min_price_filter = ls_size_filter[ls_size_filter['LS_AVG_PRICE_MM'] >= min_prop_price]
-          ls_qual_filter = ls_min_price_filter[(ls_min_price_filter['LS_QUALITY'] >= (prop_qual-1)) & (ls_min_price_filter['LS_QUALITY'] <= (prop_qual+1))]
-          ls_buyer_recs = ls_qual_filter.sort_values(by = 'LS_VOL_RANK', ascending = True)[:50]
-          ls_buyer_recs = pd.DataFrame(data = ls_buyer_recs, columns = ls_cols)
-        return ls_buyer_recs
-      elif sector == 'CBD OFFICE':
-        for investors in all_investor_idx:
-          cbd_size_filter = all_investor_idx[all_investor_idx['CBD_SF_PROP'] >= prop_size]
-          cbd_min_price_filter = cbd_size_filter[cbd_size_filter['CBD_AVG_PRICE_MM'] >= min_prop_price]
-          cbd_qual_filter = cbd_min_price_filter[(cbd_min_price_filter['CBD_QUALITY'] >= (prop_qual-1)) & (cbd_min_price_filter['CBD_QUALITY'] <= (prop_qual+1))]
-          cbd_buyer_recs = cbd_qual_filter.sort_values(by = 'CBD_VOL_RANK', ascending = True)[:50]
-          cbd_buyer_recs = pd.DataFrame(data = cbd_buyer_recs, columns = cbd_cols)
-        return cbd_buyer_recs
-      elif sector == 'SUB OFFICE':
-        for investors in all_investor_idx:
-          sub_size_filter = all_investor_idx[all_investor_idx['SUB_SF_PROP'] >= prop_size]
-          sub_min_price_filter = sub_size_filter[sub_size_filter['SUB_AVG_PRICE_MM'] >= min_prop_price]
-          sub_qual_filter = sub_min_price_filter[(sub_min_price_filter['SUB_QUALITY'] >= (prop_qual-1)) & (sub_min_price_filter['SUB_QUALITY'] <= (prop_qual+1))]
-          sub_buyer_recs = sub_qual_filter.sort_values(by = 'SUB_VOL_RANK', ascending = True)[:50]
-          sub_buyer_recs = pd.DataFrame(data = sub_buyer_recs, columns = sub_cols)
-        return sub_buyer_recs
+
 
 
 ### *****
